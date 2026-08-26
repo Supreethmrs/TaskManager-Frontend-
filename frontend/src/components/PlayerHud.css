@@ -1,0 +1,244 @@
+/* =========================================================
+   PLAYER GAMIFICATION HUD STYLES
+   ========================================================= */
+
+.player-hud-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--bg-card);
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-card);
+}
+
+/* Level Badge */
+.player-level-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--table-row-hover);
+  border: 1px solid var(--accent-primary);
+  padding: 3px 8px;
+  border-radius: 12px;
+  box-shadow: var(--accent-glow-subtle);
+}
+
+.level-label {
+  font-family: var(--font-gaming);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent-primary);
+  letter-spacing: 0.5px;
+}
+
+.level-number {
+  font-family: var(--font-gaming);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* XP Progress Bar */
+.player-xp-section {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 140px;
+}
+
+.xp-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-gaming);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.xp-label {
+  color: var(--text-secondary);
+}
+
+.xp-values {
+  color: var(--text-primary);
+}
+
+.xp-target {
+  color: var(--text-dim);
+  font-weight: 500;
+}
+
+.xp-bar-track {
+  width: 100%;
+  height: 6px;
+  background: var(--bg-input);
+  border-radius: 4px;
+  border: 1px solid var(--border-subtle);
+  overflow: hidden;
+  position: relative;
+}
+
+.xp-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-primary-hover) 100%);
+  border-radius: 3px;
+  position: relative;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 8px var(--accent-primary);
+}
+
+.xp-bar-glimmer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  filter: blur(2px);
+}
+
+/* Streak Pill */
+.streak-pill {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--table-row-hover);
+  border: 1px solid var(--border-subtle);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-family: var(--font-gaming);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.streak-pill.active {
+  border-color: #ff9100;
+  color: #ff9100;
+  box-shadow: 0 0 6px rgba(255, 145, 0, 0.3);
+}
+
+.streak-icon {
+  font-size: 12px;
+}
+
+/* SFX Audio Button */
+.sfx-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.sfx-toggle-btn:hover {
+  color: var(--accent-primary);
+  transform: scale(1.1);
+}
+
+.sfx-toggle-btn.active {
+  color: var(--accent-primary);
+}
+
+.sfx-toggle-btn.muted {
+  color: var(--text-dim);
+}
+
+.sfx-toggle-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* ---------------- LEVEL UP MODAL ---------------- */
+.levelup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeIn 0.2s ease;
+}
+
+.levelup-card {
+  background: var(--bg-card);
+  border: 2px solid var(--accent-primary);
+  box-shadow: 0 0 30px var(--accent-primary), var(--shadow-modal);
+  border-radius: 20px;
+  padding: 36px 32px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  animation: levelupPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes levelupPop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.levelup-sparkles {
+  font-size: 36px;
+  margin-bottom: 8px;
+  animation: floatBounce 1.5s infinite ease-in-out;
+}
+
+@keyframes floatBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+.levelup-title {
+  font-family: var(--font-gaming);
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--accent-primary);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.levelup-badge-display {
+  display: inline-block;
+  background: var(--accent-primary);
+  color: var(--accent-btn-text);
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-family: var(--font-gaming);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  box-shadow: var(--accent-glow-strong);
+}
+
+.levelup-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+.levelup-ack-btn {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .player-xp-section {
+    display: none;
+  }
+}

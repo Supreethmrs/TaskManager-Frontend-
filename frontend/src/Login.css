@@ -1,0 +1,501 @@
+/* ==========================================================================
+   LOGIN & SIGNUP STYLES - THEMED VIA CSS CUSTOM PROPERTIES
+   - Scoped under [data-theme] attributes in index.css
+   ========================================================================== */
+
+.login-wrapper {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-primary);
+  background-image: var(--bg-radial-ambient);
+  transition: background-color 0.25s ease;
+}
+
+/* Corner Theme Picker on Auth Page */
+.auth-theme-picker-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 100;
+}
+
+/* Main Login/Signup Card */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  padding: 36px 32px;
+  box-shadow: var(--shadow-modal);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.login-card:hover {
+  border-color: var(--accent-primary);
+  box-shadow: var(--accent-glow-subtle), var(--shadow-modal);
+  transform: translateY(-2px);
+}
+
+/* Top edge glowing neon line */
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+  box-shadow: 0 0 8px var(--accent-primary);
+}
+
+/* Card Header */
+.login-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.gaming-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-interactive);
+  color: var(--accent-primary);
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-card);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-card:hover .gaming-badge {
+  transform: translateY(-2px) scale(1.04);
+  border-color: var(--accent-primary);
+  box-shadow: var(--accent-glow-subtle);
+}
+
+.gaming-badge svg {
+  width: 28px;
+  height: 28px;
+  stroke: currentColor;
+}
+
+.login-title {
+  font-family: var(--font-gaming);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent-primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+/* Error Banner */
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--badge-urgent-bg);
+  border: 1px solid var(--badge-urgent-border);
+  box-shadow: 0 0 8px rgba(220, 38, 38, 0.25);
+  color: var(--badge-urgent-text);
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  animation: shake 0.35s ease-in-out;
+}
+
+.error-banner svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+/* Success Message Banner */
+.success-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(202, 138, 4, 0.08);
+  border: 1px solid #ca8a04;
+  box-shadow: 0 0 8px rgba(202, 138, 4, 0.25);
+  color: #ca8a04;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.success-banner svg {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+}
+
+/* Form Styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  font-family: var(--font-gaming);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.form-group:focus-within .form-label {
+  color: var(--accent-primary);
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.input-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.gaming-input {
+  width: 100%;
+  padding: 12px 14px 12px 42px;
+  background: var(--bg-input);
+  border: 1px solid var(--border-interactive);
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: var(--font-primary);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gaming-input::placeholder {
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.gaming-input:hover {
+  border-color: var(--border-card-hover);
+}
+
+.gaming-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: var(--accent-glow-subtle);
+}
+
+.input-container:focus-within .input-icon {
+  color: var(--accent-primary);
+}
+
+.gaming-input.has-error {
+  border-color: var(--badge-urgent-text);
+  box-shadow: 0 0 8px rgba(220, 38, 38, 0.3);
+}
+
+/* Password Toggle Button */
+.password-toggle-btn {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: var(--text-dim);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  color: var(--accent-primary);
+}
+
+.password-toggle-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Extra Options (Remember & Forgot) */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.remember-me:hover {
+  color: var(--text-primary);
+}
+
+.gaming-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--border-interactive);
+  border-radius: 4px;
+  background: var(--bg-card);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.gaming-checkbox:hover {
+  border-color: var(--accent-primary);
+}
+
+.gaming-checkbox:checked {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  box-shadow: var(--accent-glow-subtle);
+}
+
+.gaming-checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 3px;
+  height: 7px;
+  border: solid var(--accent-btn-text);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.forgot-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.forgot-link:hover {
+  color: var(--accent-primary);
+}
+
+/* Submit Button */
+.submit-btn {
+  width: 100%;
+  padding: 13px 20px;
+  margin-top: 4px;
+  border: 1px solid var(--accent-primary);
+  border-radius: 10px;
+  background: var(--accent-primary);
+  color: var(--accent-btn-text);
+  font-family: var(--font-gaming);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--accent-glow-subtle);
+  transition: all 0.25s ease;
+}
+
+.submit-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    60deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  transform: rotate(30deg) translateY(-100%);
+  transition: transform 0.75s ease-in-out;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  background: var(--accent-primary-hover);
+  border-color: var(--accent-primary-hover);
+  box-shadow: var(--accent-glow-strong);
+}
+
+.submit-btn:hover::after {
+  transform: rotate(30deg) translateY(100%);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+.submit-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--accent-btn-text);
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover svg {
+  transform: translateX(3px);
+}
+
+/* Footer / Switch link */
+.login-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.signup-link {
+  background: transparent;
+  border: none;
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  margin-left: 6px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+}
+
+.signup-link:hover {
+  color: var(--accent-primary-hover);
+  transform: translateX(2px);
+}
+
+/* Corner futuristic HUD decor elements */
+.hud-corner-tl,
+.hud-corner-br {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.hud-corner-tl {
+  top: 8px;
+  left: 8px;
+  border-top: 2px solid var(--accent-primary);
+  border-left: 2px solid var(--accent-primary);
+  border-top-left-radius: 4px;
+  filter: drop-shadow(0 0 4px var(--accent-primary));
+}
+
+.hud-corner-br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 2px solid var(--accent-primary);
+  border-right: 2px solid var(--accent-primary);
+  border-bottom-right-radius: 4px;
+  filter: drop-shadow(0 0 4px var(--accent-primary));
+}
+
+/* Animations */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .login-card {
+    padding: 28px 20px;
+    border-radius: 14px;
+  }
+
+  .login-title {
+    font-size: 28px;
+  }
+
+  .gaming-badge {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 10px;
+  }
+
+  .submit-btn {
+    font-size: 16px;
+    padding: 12px 16px;
+  }
+
+  .auth-theme-picker-wrapper {
+    top: 14px;
+    right: 14px;
+  }
+}

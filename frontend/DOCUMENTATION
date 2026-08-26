@@ -1,0 +1,196 @@
+# ⚡ TaskForge HQ: Complete Build & Feature Summary
+
+**Project Name**: TaskForge HQ Pro (Ultimate Productivity & Gamification Suite)  
+**Date**: August 26, 2026  
+**Architecture**: React + TypeScript (Vite), Express.js Backend, Prisma 7 ORM, PostgreSQL (Neon Serverless)
+
+---
+
+## 📑 Table of Contents
+1. [Core Features & Power Suite Overview](#1-core-features--power-suite-overview)
+2. [Gen-Z Theming & Design System (4 Palettes)](#2-gen-z-theming--design-system)
+3. [Gamification HUD, XP & Bidirectional Streak Engine](#3-gamification-hud-xp--streak-engine)
+4. [Interactive Overdue Roast & Chrono Capsule Engine](#4-interactive-overdue-roast--chrono-capsule-engine)
+5. [Cyber Focus Clock & Ambient Audio Synthesizer](#5-cyber-focus-clock--ambient-audio-synthesizer)
+6. [Global Command Palette (Ctrl + K)](#6-global-command-palette-ctrl--k)
+7. [Drag-and-Drop Kanban Board View](#7-drag-and-drop-kanban-board-view)
+8. [Smart AI Quest Decomposer](#8-smart-ai-quest-decomposer)
+9. [Smart Recurring Quests Engine](#9-smart-recurring-quests-engine)
+10. [Trophy Vault & Milestone Badges](#10-trophy-vault--milestone-badges)
+11. [One-Click Data & Report Export Suite](#11-one-click-data--report-export-suite)
+12. [File & Directory Architecture Reference](#12-file--directory-architecture-reference)
+
+---
+
+## 1. Core Features & Power Suite Overview
+
+TaskForge HQ has been upgraded from a standard task manager into a **gamified, cyberpunk-infused command center** tailored for high efficiency, speed, and modern Gen-Z aesthetic appeal.
+
+### Key Milestones Completed:
+- **Zero-lag keyboard workflows**: Full command palette (<kbd>Ctrl</kbd> + <kbd>K</kbd>) for searching, navigating, and toggling tools.
+- **5 Comprehensive View Modes**: List, Cards, Table, Kanban Drag-and-Drop, and Analytics Command Center.
+- **Generative ambient audio**: In-browser audio synthesis for focus sessions (Rain, Space, Cafe, Synthwave).
+- **Automated workflows**: AI quest breakdowns, recurring task auto-respawning, and one-click data exports.
+- **Fair-play gamification**: Dynamic level thresholds, multi-tier priority XP bonuses, bidirectional reversal on accidental check-offs, and streak protection.
+
+---
+
+## 2. Gen-Z Theming & Design System
+
+The entire styling architecture was converted into a dynamic CSS variable token system featuring **4 distinct, hyper-modern Gen-Z palettes**:
+
+| Theme ID | Name & Vibe | Primary Accent | Background | Key Features |
+| :--- | :--- | :--- | :--- | :--- |
+| `acid-glitch` | 🧪 **Acid Glitch / Cyber Matrix** (Hacker / Dark Cyberpunk) | `#ccff00` (Acid Lime) | `#07080d` (Void Black) | Electric Cyan `#00f2fe` accents, neon glows, glitch effects |
+| `neon-tokyo` | 🌆 **Neon Tokyo / Synthwave** (Outrun / Cyberpunk City) | `#ff007f` (Hot Magenta) | `#080612` (Deep Obsidian) | Cyber Violet `#a855f7`, cyan grid highlights |
+| `brat-charcoal` | 🍏 **Brat & Charcoal** (Charcoal Silver / Charli XCX Aesthetic) | `#8ace00` (Brat Green) | `#000000` (Pitch Charcoal) | Minimalist stark typography, chrome silver borders |
+| `dreamcore-y2k` | 🌸 **Y2K Dreamcore** (Soft Light / Pastel Cyber) | `#ff2a85` (Barbie Pink) | `#f8f6fc` (Pearl White) | Pastel Sky Blue `#38bdf8`, soft lavender glass cards |
+
+- **Theme Picker**: Swatch discs with live hover previews, theme persistence in `localStorage`, and instant command palette switching.
+
+---
+
+## 3. Gamification HUD, XP & Streak Engine
+
+### XP Rewards & Deductions:
+- **Priority Tiering**:
+  - 🔴 **CRITICAL**: `+150 XP`
+  - 🟠 **HIGH**: `+100 XP`
+  - 🔵 **MEDIUM**: `+50 XP`
+  - 🟢 **LOW**: `+30 XP`
+  - ⏱️ **On-Time Bonus**: `+25 XP` extra if completed before deadline.
+- **Bidirectional Undo Handling**: Unchecking a task subtracts the exact amount originally gained (with floating red `-50 XP` feedback) and dynamically recalculates player rank.
+- **Streak Calculation**:
+  - Automatically increments on the first completion of a new day.
+  - Automatically resets to `0` if all completed tasks are unchecked.
+- **Player HUD**: Displays level badge (e.g. `LVL 1 - CYBER RECRUIT`), progress bar towards the next 500 XP threshold, and flame streak indicator (`🔥 3d`).
+
+---
+
+## 4. Interactive Overdue Roast & Chrono Capsule Engine
+
+### Overdue Handling & Calculations:
+- **Minute Precision**: Under 1 hour, displays exact elapsed minutes (`5m Late`, `22m Late`) instead of forcing `1h Late`.
+- **60-Second Grace Buffer**: Tasks created for the current minute remain in active `TODAY` status and do not prematurely trigger overdue flags.
+- **Smart Modal Time Defaults**: Opening "+ Add Quest" defaults the date to today and time to current local time.
+- **Chrono Capsule HUD**: In List view, tasks display a futuristic calendar tile showing uppercase Month, large Day digits, and time badge.
+- **Interactive Roast Popovers**: Overdue tasks display funny, Gen-Z gaming roasts (e.g., *"Procrastination lvl: 9999"*, *"Houston, We Dropped It"*) neatly tucked into a floating tooltip on hover.
+
+---
+
+## 5. Cyber Focus Clock & Ambient Audio Synthesizer
+
+Located in the top header via the **⏱️ Focus** dock:
+- **Circular Progress Dial**: Visual animated countdown timer with preset buttons (`15m`, `25m Focus`, `45m Deep Work`, `60m`, `5m Break`) and quick `+5m` / `-5m` adjustment nudges.
+- **Custom Duration Input**: Set any custom minute timer (1 to 240 minutes).
+- **Target Lock**: Binds the timer to a specific mission title.
+- **Generative Web Audio Synthesizer**: No external audio files or network requests required. Synthesizes soothing procedural audio in real time:
+  - 🌧️ **Cyber Rain**: Filtered low-pass pink noise with ambient rumble.
+  - 🌌 **Deep Space**: 432Hz binaural alpha wave focus drone.
+  - ☕ **Neo-Tokyo Cafe**: Warm bandpass vinyl hum.
+  - 🎵 **Synthwave Chill**: Procedural electronic focus chord swells.
+- **Volume Controller & Auto-Pause**: Integrated slider with auto-stop when paused.
+
+---
+
+## 6. Global Command Palette (`Ctrl + K` / `Cmd + K`)
+
+- **Shortcut**: <kbd>Ctrl</kbd> + <kbd>K</kbd> (or <kbd>Cmd</kbd> + <kbd>K</kbd> on macOS) or the **⚡ Cmd** button in the header.
+- **Fuzzy Search & Filtering**: Type to search through all tasks, categories, actions, themes, and views.
+- **Keyboard Navigation**: Navigate options using <kbd>↑</kbd> and <kbd>↓</kbd> arrows, press <kbd>Enter</kbd> to execute, or <kbd>Esc</kbd> to dismiss.
+
+---
+
+## 7. Drag-and-Drop Kanban Board View
+
+- **Tab**: Access via the **📋 Kanban** tab in the main view switcher.
+- **4 Interactive Workflow Columns**:
+  1. 📝 **TO-DO** (Active backlog)
+  2. ⚡ **IN PROGRESS** (Active focus)
+  3. 🔍 **IN REVIEW** (Pending verification)
+  4. ✅ **CLEARED** (Completed)
+- **HTML5 Drag-and-Drop**: Visual drop zones with instant database sync. Dropping a card onto "CLEARED" completes the mission and awards player XP.
+
+---
+
+## 8. Smart AI Quest Decomposer
+
+- Located inside the **+ Add Quest** modal.
+- Click **⚡ AI Breakdown** next to the Quest Title.
+- Analyzes the input context (coding, studying, fitness, organizing, meetings, etc.) and automatically generates:
+  - 4 structured action-item checklist steps.
+  - Recommended estimated focus duration (e.g. 25m, 35m, 45m).
+  - Recommended mission priority (`CRITICAL`, `HIGH`, `MEDIUM`, `LOW`).
+
+---
+
+## 9. Smart Recurring Quests Engine
+
+- Set tasks to repeat automatically in the creation modal:
+  - `DAILY`: Repeats every day.
+  - `WEEKDAYS`: Repeats Monday through Friday (skips weekends).
+  - `WEEKLY`: Repeats every 7 days.
+  - `MONTHLY`: Repeats every month.
+- **Auto-Respawn**: When a recurring quest is checked off, the backend awards your XP, archives the completed instance, and automatically creates and schedules the **next occurrence** with the same checklist template.
+
+---
+
+## 10. Trophy Vault & Milestone Badges
+
+- Accessible via the **🏆 Vault** button in the top navigation.
+- **Trophy Showcase**:
+  - 🔰 **Initiation Rite**: Complete your first quest.
+  - ⚡ **Speed Demon**: Complete 3 quests on-time.
+  - 🔥 **Streak Master**: Achieve a 3-day completion streak.
+  - 👑 **Quest Centurion**: Complete 10 total quests.
+  - 💎 **Cyber Overlord**: Reach Level 3 Commander rank.
+- Includes progress bars and unlocked badge status tags.
+
+---
+
+## 11. One-Click Data & Report Export Suite
+
+- Accessible via the **📤 Export** button in the dashboard action bar:
+  - 📊 **CSV Spreadsheet**: Exports full quest metadata, priorities, dates, and sub-tasks into a standard CSV table.
+  - 📝 **Markdown Mission Report**: Formatted weekly progress report with status summaries and active/cleared lists.
+  - 💾 **JSON Backup**: Raw backup file containing complete task data.
+
+---
+
+## 12. File & Directory Architecture Reference
+
+```
+PTM/
+├── backend/
+│   ├── prisma/
+│   │   └── schema.prisma        # PostgreSQL models with kanbanStatus & recurrence
+│   ├── prismaClient.js          # Prisma 7 client with @prisma/adapter-pg
+│   ├── server.js                # Express API (Auth, Gamified Tasks, Kanban, Analytics, Achievements)
+│   └── package.json
+│
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   │   ├── AchievementsModal.tsx & .css # Trophy Vault & badges modal
+    │   │   ├── AnalyticsView.tsx & .css     # Command Center charts & velocity metrics
+    │   │   ├── CommandPalette.tsx & .css    # Ctrl+K Quick Action launcher
+    │   │   ├── KanbanBoard.tsx & .css       # Drag-and-drop 4-column board
+    │   │   ├── PlayerHud.tsx & .css         # Gamification XP & Level HUD
+    │   │   └── PomodoroTimer.tsx & .css     # Focus clock & ambient audio dock
+    │   ├── utils/
+    │   │   ├── AmbientAudio.ts              # Generative Web Audio API soundscapes
+    │   │   ├── SoundEffects.ts              # Interactive audio cues
+    │   │   └── TaskHelpers.ts               # AI decomposer & CSV/MD/JSON exporters
+    │   ├── Dashboard.tsx & .css             # Main interactive dashboard container
+    │   ├── ThemePicker.tsx & .css           # 4 Gen-Z themes switcher
+    │   ├── Login.tsx & Signup.tsx           # Authentication pages
+    │   ├── index.css                        # CSS theme design tokens & glows
+    │   ├── App.tsx                          # Root router & theme persistence
+    │   └── main.tsx
+    ├── package.json
+    └── vite.config.ts
+```
+
+---
+
+*All features tested and verified with zero build or linting errors.*

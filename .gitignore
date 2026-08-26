@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Environment variables & secrets
+.env
+.env.*
+*.env
+
+# Production build output
+dist/
+*/dist/
+build/
+*/build/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Antigravity / Agents local files
+.agents/
+.claude/
+.windsurf/
+skills-lock.json
+
+# Prisma generated
+/generated/prisma

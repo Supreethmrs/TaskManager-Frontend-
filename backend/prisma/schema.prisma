@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id                String    @id @default(uuid())
+  email             String    @unique
+  password          String
+  tasks             Task[]
+  xp                Int       @default(0)
+  level             Int       @default(1)
+  streakCount       Int       @default(0)
+  lastCompletedDate DateTime?
+  createdAt         DateTime  @default(now())
+}
+
+model Task {
+  id               String     @id @default(uuid())
+  title            String
+  description      String?
+  completed        Boolean    @default(false)
+  user             User       @relation(fields: [userId], references: [id])
+  userId           String
+  createdAt        DateTime   @default(now())
+  category         Category?  @relation(fields: [categoryId], references: [id])
+  categoryId       String?
+  dueDate          DateTime?
+  priority         String     @default("MEDIUM") // LOW, MEDIUM, HIGH, CRITICAL
+  estimatedMinutes Int?       @default(25)
+  kanbanStatus     String     @default("TODO") // TODO, IN_PROGRESS, REVIEW, DONE
+  isRecurring      Boolean    @default(false)
+  recurrenceRule   String?    // DAILY, WEEKDAYS, WEEKLY, MONTHLY
+  steps            TaskStep[]
+}
+
+model TaskStep {
+  id        String   @id @default(uuid())
+  title     String
+  completed Boolean  @default(false)
+  order     Int      @default(0)
+  task      Task     @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  taskId    String
+  createdAt DateTime @default(now())
+}
+
+model Category {
+  id    String @id @default(uuid())
+  name  String @unique
+  tasks Task[]
+}

@@ -1,0 +1,404 @@
+/* =========================================================
+   CYBER POMODORO TIMER STYLES - WITH AMBIENT AUDIO CONTROLS
+   ========================================================= */
+
+.pomodoro-timer-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 16px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.pomodoro-timer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+  box-shadow: 0 0 8px var(--accent-primary);
+}
+
+.pomodoro-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.pomodoro-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pomodoro-icon {
+  font-size: 16px;
+}
+
+.pomodoro-title {
+  font-family: var(--font-gaming);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-primary);
+}
+
+.pomodoro-close-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: color 0.2s;
+}
+
+.pomodoro-close-btn:hover {
+  color: var(--accent-primary);
+}
+
+.pomodoro-active-task {
+  background: var(--table-row-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.task-target-label {
+  font-family: var(--font-gaming);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--accent-primary);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.task-target-name {
+  font-size: 12px;
+  color: var(--text-primary);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Dial and Circular Progress with +/- Adjust Buttons */
+.pomodoro-dial-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.time-adjust-btn {
+  background: var(--table-row-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-gaming);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.time-adjust-btn:hover:not(:disabled) {
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  transform: scale(1.08);
+}
+
+.time-adjust-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.pomodoro-dial-container {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pomodoro-dial-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.dial-track {
+  fill: none;
+  stroke: var(--table-row-hover);
+  stroke-width: 6;
+}
+
+.dial-progress {
+  fill: none;
+  stroke: var(--accent-primary);
+  stroke-width: 6;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.8s linear;
+  filter: drop-shadow(0 0 6px var(--accent-primary));
+}
+
+.pomodoro-time-display {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.time-digits {
+  font-family: var(--font-gaming);
+  font-size: 30px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+}
+
+.time-mode-label {
+  font-family: var(--font-gaming);
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* Preset Chips */
+.pomodoro-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.preset-btn {
+  padding: 4px 9px;
+  border-radius: 6px;
+  background: var(--table-row-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-gaming);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.preset-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.preset-btn.active {
+  background: var(--bg-card);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  box-shadow: var(--accent-glow-subtle);
+  font-weight: 700;
+}
+
+.preset-btn.custom {
+  border-style: dashed;
+}
+
+/* Custom Input Form */
+.custom-time-input-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--table-row-hover);
+  border: 1px solid var(--border-interactive);
+  padding: 6px 10px;
+  border-radius: 8px;
+  animation: slideDown 0.2s ease;
+}
+
+.custom-input-label {
+  font-family: var(--font-gaming);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
+
+.custom-number-input {
+  width: 54px;
+  padding: 3px 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-interactive);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: var(--font-gaming);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  outline: none;
+}
+
+.custom-number-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.custom-apply-btn {
+  padding: 4px 10px;
+  background: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-btn-text);
+  border-radius: 6px;
+  font-family: var(--font-gaming);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Ambient Audio Section */
+.ambient-audio-section {
+  width: 100%;
+  background: var(--table-row-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ambient-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ambient-title {
+  font-family: var(--font-gaming);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+.ambient-vol-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vol-icon {
+  font-size: 11px;
+}
+
+.ambient-vol-slider {
+  width: 60px;
+  height: 4px;
+  accent-color: var(--accent-primary);
+  cursor: pointer;
+}
+
+.ambient-tracks-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.ambient-chip {
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-size: 10.5px;
+  font-family: var(--font-gaming);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ambient-chip:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.ambient-chip.active {
+  border-color: var(--accent-primary);
+  background: var(--bg-card);
+  color: var(--accent-primary);
+  box-shadow: var(--accent-glow-subtle);
+}
+
+/* Control Buttons */
+.pomodoro-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  justify-content: center;
+}
+
+.pomodoro-main-btn {
+  padding: 8px 24px;
+  background: var(--accent-primary);
+  border: 1px solid var(--accent-primary);
+  color: var(--accent-btn-text);
+  border-radius: 8px;
+  font-family: var(--font-gaming);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: var(--accent-glow-subtle);
+  transition: all 0.2s;
+}
+
+.pomodoro-main-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--accent-glow-strong);
+}
+
+.pomodoro-main-btn.running {
+  background: #eab308;
+  border-color: #eab308;
+  color: #111111;
+  box-shadow: 0 0 10px rgba(234, 179, 8, 0.4);
+}
+
+.pomodoro-reset-btn {
+  padding: 8px 16px;
+  background: var(--table-row-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  border-radius: 8px;
+  font-family: var(--font-gaming);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pomodoro-reset-btn:hover {
+  border-color: var(--border-interactive);
+  color: var(--text-primary);
+}
