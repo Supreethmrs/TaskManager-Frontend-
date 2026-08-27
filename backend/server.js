@@ -440,6 +440,11 @@ app.post('/api/tasks/:id/complete', authenticateToken, async (req, res) => {
       data: {
         completed: isCompleting,
         kanbanStatus: isCompleting ? 'DONE' : 'TODO',
+        // WHY: when completing, we SAVE the exact xpAward we're about to give,
+        // so undoing this action later can read back the TRUE amount instead
+        // of recalculating it (which could give a different, wrong answer if
+        // time has passed and the due-date bonus condition changed).
+        ...(isCompleting ? { lastXpAwarded: xpAward } : {}),
       },
       include: { category: true, steps: { orderBy: { order: 'asc' } } }
     });
@@ -519,7 +524,15 @@ app.post('/api/tasks/:id/complete', authenticateToken, async (req, res) => {
         }
       } else {
         // Reverting / Unchecking a mistakenly completed task -> DEDUCT XP
-        currentXp = Math.max(0, currentXp - xpAward);
+        //
+        // THE FIX: read back the EXACT amount stored on the task when it was
+        // completed (task.lastXpAwarded), instead of the freshly-recalculated
+        // `xpAward`, which could now be wrong if the due date has since passed.
+        // Fallback to `xpAward` only if lastXpAwarded is missing (e.g. tasks
+        // completed before this fix existed).
+        const xpToDeduct = task.lastXpAwarded ?? xpAward;
+
+        currentXp = Math.max(0, currentXp - xpToDeduct);
         currentLevel = Math.max(1, Math.floor(currentXp / 500) + 1);
 
         // If user has 0 completed tasks left, reset streak to 0
@@ -540,10 +553,12 @@ app.post('/api/tasks/:id/complete', authenticateToken, async (req, res) => {
       });
     }
 
+    const xpDelta = isCompleting ? xpAward : -(task.lastXpAwarded ?? xpAward);
+
     res.json({
       task: updatedTask,
       spawnedTask: spawnedRecurringTask,
-      xpGained: isCompleting ? xpAward : -xpAward,
+      xpGained: xpDelta,
       newXp: currentXp,
       newLevel: currentLevel,
       nextLevelXp: getNextLevelXp(currentLevel),
