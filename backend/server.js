@@ -214,12 +214,12 @@ app.post('/api/tasks', authenticateToken, async (req, res) => {
         recurrenceRule: recurrenceRule || null,
         steps: steps && Array.isArray(steps) && steps.length > 0
           ? {
-              create: steps.map((step, idx) => ({
-                title: typeof step === 'string' ? step : step.title,
-                completed: typeof step === 'object' && step.completed !== undefined ? Boolean(step.completed) : false,
-                order: idx,
-              })),
-            }
+            create: steps.map((step, idx) => ({
+              title: typeof step === 'string' ? step : step.title,
+              completed: typeof step === 'object' && step.completed !== undefined ? Boolean(step.completed) : false,
+              order: idx,
+            })),
+          }
           : undefined,
       },
       include: {
@@ -508,12 +508,12 @@ app.post('/api/tasks/:id/complete', authenticateToken, async (req, res) => {
               recurrenceRule: task.recurrenceRule,
               steps: task.steps && task.steps.length > 0
                 ? {
-                    create: task.steps.map((s, idx) => ({
-                      title: s.title,
-                      completed: false,
-                      order: idx,
-                    })),
-                  }
+                  create: task.steps.map((s, idx) => ({
+                    title: s.title,
+                    completed: false,
+                    order: idx,
+                  })),
+                }
                 : undefined,
             },
             include: {

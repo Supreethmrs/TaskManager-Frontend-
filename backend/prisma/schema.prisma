@@ -35,6 +35,15 @@ model Task {
   isRecurring      Boolean    @default(false)
   recurrenceRule   String?    // DAILY, WEEKDAYS, WEEKLY, MONTHLY
   steps            TaskStep[]
+  // WHY THIS FIELD EXISTS:
+  // Without this, the "undo" logic had to RECALCULATE the XP bonus fresh,
+  // using the CURRENT time compared to the due date. But time keeps moving —
+  // if you complete a task before its due date (earning a bonus), then uncheck
+  // it later AFTER the due date has passed, the recalculation would say
+  // "no bonus" even though a bonus WAS originally given, causing XP to leak.
+  // By storing the exact amount awarded at completion time, "undo" just reads
+  // this saved number back — no recalculation, no drift, always symmetric.
+  lastXpAwarded    Int?
 }
 
 model TaskStep {
