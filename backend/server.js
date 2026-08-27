@@ -553,12 +553,13 @@ app.post('/api/tasks/:id/complete', authenticateToken, async (req, res) => {
       });
     }
 
-    const xpDelta = isCompleting ? xpAward : -(task.lastXpAwarded ?? xpAward);
-
     res.json({
       task: updatedTask,
       spawnedTask: spawnedRecurringTask,
-      xpGained: xpDelta,
+      // WHY: report the ACTUAL amount deducted (read from storage) on undo,
+      // not the freshly recalculated value — keeps this number honest and
+      // matching exactly what happened to the user's real XP total.
+      xpGained: isCompleting ? xpAward : -(task.lastXpAwarded ?? xpAward),
       newXp: currentXp,
       newLevel: currentLevel,
       nextLevelXp: getNextLevelXp(currentLevel),
