@@ -44,6 +44,7 @@ function AppRoutes({ currentTheme, onThemeChange }: AppRoutesProps) {
         element={
           <Signup
             onSwitchToLogin={() => navigate('/login')}
+            onLoginSuccess={handleLoginSuccess}
             currentTheme={currentTheme}
             onThemeChange={onThemeChange}
           />

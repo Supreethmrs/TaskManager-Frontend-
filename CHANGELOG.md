@@ -4,6 +4,23 @@ All notable changes across the TaskForge HQ application (Frontend & Backend) are
 
 ---
 
+## [2.1.0] - 2026-08-27 (Modern Centered Auth Portal & Login Engine Fixes)
+
+### 🎨 Centered Frosted Glass Auth Portal
+- **Centered Glass Card Layout**: Repositioned login & signup forms into a centered, balanced frosted glass deck (`backdrop-filter: blur(28px)`).
+- **3D Cyberpunk Command Center Background**: Integrated crystal clear 16:9 3D cyberpunk command center artwork with ambient breathing zoom.
+- **Interactive SVG Eye Password Toggle**: Replaced lock text toggle with modern SVG Eye / Eye-off visibility buttons.
+- **Clean Streamlined UX**:
+  - Replaced button text with clean `LOG IN ➔`.
+  - Updated footer prompt to `Don't have an account? Create Account`.
+  - Removed demo buttons for a focused, production-grade interface.
+
+### 🛠️ Backend & Authentication Fixes
+- **Case & Whitespace Normalization**: Added `email.trim().toLowerCase()` to `/api/signup` and `/api/login` to eliminate login mismatches caused by mobile autocapitalization.
+- **Seamless Auto-Login**: Creating an account now automatically issues a session JWT token and directs the user to the dashboard immediately.
+
+---
+
 ## [2.0.0] - 2026-08-27 (Power Suite & Polish Release)
 
 ### 🚀 Core Power Features Added

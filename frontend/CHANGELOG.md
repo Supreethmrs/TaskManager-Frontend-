@@ -2,6 +2,13 @@
 
 All notable changes to the TaskForge frontend are documented here.
 
+## [2.1.0] - 2026-08-27
+### Added & Improved
+- **Centered Frosted Glass Authentication**: Sleek, focused centered card layout with 3D cyberpunk panoramic background.
+- **SVG Eye Visibility Toggle**: Interactive password visibility toggle using modern SVG icons.
+- **Instant Auto-Login Flow**: Accounts created in signup mode automatically transition straight into the dashboard with session tokens stored.
+- **Polished UX**: `LOG IN ➔` button and `Don't have an account?` footer prompts.
+
 ## [2.0.0] - 2026-08-27
 ### Added
 - **Global Command Palette (`Ctrl + K` / `Cmd + K`)**:

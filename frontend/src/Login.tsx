@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import type { FormEvent } from 'react';
 import './Login.css';
 import { ThemePicker, type ThemeName } from './ThemePicker';
+import { soundEffects } from './utils/SoundEffects';
 
 interface LoginProps {
   onSwitchToSignup?: () => void;
@@ -11,236 +12,212 @@ interface LoginProps {
 }
 
 export const Login: React.FC<LoginProps> = ({
-  onSwitchToSignup,
+  onSwitchToSignup: _onSwitchToSignup,
   onLoginSuccess,
   currentTheme = 'acid-glitch',
   onThemeChange = () => {},
 }) => {
+  const [mode, setMode] = useState<'login' | 'signup'>('login');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [submitted, setSubmitted] = useState<boolean>(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [signupSuccess, setSignupSuccess] = useState<boolean>(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitted(false);
-
-    // Basic Validation: Ensure both fields are provided
-    if (!email.trim() && !password.trim()) {
-      setError('Please enter your email and password');
-      return;
-    }
+    setError('');
+    setSignupSuccess(false);
 
     if (!email.trim()) {
-      setError('Email address is required');
+      setError('Please enter your email address');
       return;
     }
-
     if (!password.trim()) {
-      setError('Password is required');
+      setError('Please enter your password');
       return;
     }
 
-    // Reset error state
-    setError('');
+    if (mode === 'signup') {
+      if (password.length < 6) {
+        setError('Password must be at least 6 characters');
+        return;
+      }
+      if (password !== confirmPassword) {
+        setError('Passwords do not match');
+        return;
+      }
+    }
 
-    // Call the real backend login endpoint
+    setIsLoading(true);
+    soundEffects.playClick();
+
     try {
-      const res = await fetch('http://localhost:3000/api/login', {
+      const normalizedEmail = email.trim().toLowerCase();
+      const endpoint = mode === 'login' ? 'http://localhost:3000/api/login' : 'http://localhost:3000/api/signup';
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email: normalizedEmail, password }),
       });
       const data = await res.json();
 
       if (res.ok) {
-        // Save the token so future requests know we're logged in
         localStorage.setItem('token', data.token);
-        setSubmitted(true);
+        soundEffects.playTaskComplete();
         if (onLoginSuccess) {
-          onLoginSuccess(email);
+          onLoginSuccess(data.user?.email || normalizedEmail);
         }
       } else {
-        setError(data.error || 'Login failed');
+        setError(data.error || (mode === 'login' ? 'Invalid email or password' : 'Signup failed'));
       }
     } catch (err) {
-      console.error('Login error:', err);
-      setError('Could not reach the server. Is the backend running?');
+      console.error(err);
+      setError('Could not reach the backend server.');
+    } finally {
+      setIsLoading(false);
     }
   };
 
-  const handleInputChange = (field: 'email' | 'password', value: string) => {
-    if (field === 'email') setEmail(value);
-    if (field === 'password') setPassword(value);
-    if (error) setError('');
-    if (submitted) setSubmitted(false);
-  };
-
   return (
-    <div className="login-wrapper">
-      {/* Corner Theme Picker on Auth Page */}
-      <div className="auth-theme-picker-wrapper">
-        <ThemePicker
-          currentTheme={currentTheme}
-          onThemeChange={onThemeChange}
-          compact
-        />
+    <div className="center-auth-viewport">
+      {/* Top Right Theme Picker */}
+      <div className="center-auth-theme-picker">
+        <ThemePicker currentTheme={currentTheme} onThemeChange={onThemeChange} compact />
       </div>
 
-      <div className="login-card">
-        {/* Futuristic HUD Corner Decors */}
-        <div className="hud-corner-tl" />
-        <div className="hud-corner-br" />
-
-        {/* Card Header */}
-        <div className="login-header">
-          <div className="gaming-badge" title="Gamer Access Portal">
-            {/* Gamepad / Cyber Badge Icon */}
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <rect x="2" y="6" width="20" height="12" rx="4" />
-              <path d="M6 12h4" />
-              <path d="M8 10v4" />
-              <circle cx="15" cy="11" r="1" fill="currentColor" />
-              <circle cx="18" cy="13" r="1" fill="currentColor" />
-            </svg>
+      {/* Main Centered Frosted Glass Login Card */}
+      <div className="center-login-card">
+        {/* Card Top Brand & Status */}
+        <div className="card-brand-header">
+          <div className="brand-badge-pill">
+            <span className="brand-icon">⚡</span>
+            <div className="brand-text-block">
+              <span className="brand-name">TASKFORGE</span>
+              <span className="brand-tag">HQ v2.0</span>
+            </div>
           </div>
-          <h1 className="login-title">Login</h1>
-          <p className="login-subtitle">Enter the Game Realm</p>
+          <div className="status-live-chip">
+            <span className="live-dot" />
+            <span className="live-text">ONLINE</span>
+          </div>
         </div>
 
-        {/* Error Alert Banner */}
+        {/* Mode Switcher Tabs */}
+        <div className="card-mode-toggle">
+          <button
+            type="button"
+            className={`toggle-tab ${mode === 'login' ? 'active' : ''}`}
+            onClick={() => {
+              soundEffects.playClick();
+              setMode('login');
+              setError('');
+            }}
+          >
+            LOG IN
+          </button>
+          <button
+            type="button"
+            className={`toggle-tab ${mode === 'signup' ? 'active' : ''}`}
+            onClick={() => {
+              soundEffects.playClick();
+              setMode('signup');
+              setError('');
+            }}
+          >
+            SIGN UP
+          </button>
+          <div className={`toggle-glider ${mode === 'signup' ? 'right' : 'left'}`} />
+        </div>
+
+        {/* Title Section */}
+        <div className="card-title-block">
+          <h1 className="card-main-title">
+            {mode === 'login' ? 'WELCOME BACK' : 'CREATE ACCOUNT'}
+          </h1>
+          <p className="card-subtitle">
+            {mode === 'login'
+              ? 'Access your task matrix and daily quests'
+              : 'Join the crew and level up your daily productivity'}
+          </p>
+        </div>
+
+        {/* Alerts */}
         {error && (
-          <div className="error-banner" role="alert">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <line x1="12" y1="8" x2="12" y2="12" />
-              <line x1="12" y1="16" x2="12.01" y2="16" />
-            </svg>
+          <div className="center-alert error" role="alert">
+            <span className="alert-icon">⚠️</span>
             <span>{error}</span>
           </div>
         )}
-
-        {/* Success Confirmation Banner */}
-        {submitted && !error && (
-          <div className="success-banner" role="status">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-              <polyline points="22 4 12 14.01 9 11.01" />
-            </svg>
-            <span>Logged in successfully!</span>
+        {signupSuccess && (
+          <div className="center-alert success" role="status">
+            <span className="alert-icon">✨</span>
+            <span>Account initialized! Switching to Log In...</span>
           </div>
         )}
 
-        {/* Login Form */}
-        <form className="login-form" onSubmit={handleSubmit} noValidate>
-          {/* Email Input Field */}
-          <div className="form-group">
-            <label className="form-label" htmlFor="email-input">
-              Email
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="center-form-stack" noValidate>
+          {/* Email Field */}
+          <div className="center-field-group">
+            <label className="field-label" htmlFor="center-email">
+              COMM-LINK (EMAIL)
             </label>
-            <div className="input-container">
-              <span className="input-icon">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
-                </svg>
-              </span>
+            <div className="field-input-wrapper">
+              <span className="field-icon">✉️</span>
               <input
-                id="email-input"
+                id="center-email"
                 type="email"
-                className={`gaming-input ${error && !email.trim() ? 'has-error' : ''}`}
-                placeholder="Email"
+                className="center-input"
+                placeholder="commander@taskforge.gg"
                 value={email}
-                onChange={(e) => handleInputChange('email', e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  if (error) setError('');
+                }}
                 autoComplete="email"
               />
             </div>
           </div>
 
-          {/* Password Input Field */}
-          <div className="form-group">
-            <label className="form-label" htmlFor="password-input">
-              Password
-            </label>
-            <div className="input-container">
-              <span className="input-icon">
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
-                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                </svg>
-              </span>
+          {/* Password Field */}
+          <div className="center-field-group">
+            <div className="field-label-row">
+              <label className="field-label" htmlFor="center-password">
+                SECURITY KEY (PASSWORD)
+              </label>
+            </div>
+            <div className="field-input-wrapper">
+              <span className="field-icon">🔒</span>
               <input
-                id="password-input"
+                id="center-password"
                 type={showPassword ? 'text' : 'password'}
-                className={`gaming-input ${error && !password.trim() ? 'has-error' : ''}`}
-                placeholder="Password"
+                className="center-input"
+                placeholder="••••••••"
                 value={password}
-                onChange={(e) => handleInputChange('password', e.target.value)}
-                autoComplete="current-password"
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  if (error) setError('');
+                }}
+                autoComplete={mode === 'login' ? 'current-password' : 'new-password'}
               />
               <button
                 type="button"
-                className="password-toggle-btn"
+                className="eye-toggle-btn"
                 onClick={() => setShowPassword(!showPassword)}
-                title={showPassword ? 'Hide password' : 'Show password'}
-                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                title={showPassword ? 'Hide Password' : 'Show Password'}
+                aria-label={showPassword ? 'Hide Password' : 'Show Password'}
               >
                 {showPassword ? (
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px' }}>
                     <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
                     <line x1="1" y1="1" x2="23" y2="23" />
                   </svg>
                 ) : (
-                  <svg
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px' }}>
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                     <circle cx="12" cy="12" r="3" />
                   </svg>
@@ -249,49 +226,75 @@ export const Login: React.FC<LoginProps> = ({
             </div>
           </div>
 
-          {/* Form Options (Remember & Forgot) */}
-          <div className="form-options">
-            <label className="remember-me">
-              <input type="checkbox" className="gaming-checkbox" />
-              <span>Remember me</span>
-            </label>
-            <a
-              href="#forgot"
-              className="forgot-link"
-              onClick={(e) => {
-                e.preventDefault();
-                alert('Password reset module is currently locked.');
-              }}
-            >
-              Forgot Password?
-            </a>
-          </div>
+          {/* Confirm Password Field (Sign Up Only) */}
+          {mode === 'signup' && (
+            <div className="center-field-group anim-slide-down">
+              <label className="field-label" htmlFor="center-confirm-pass">
+                CONFIRM PASSWORD
+              </label>
+              <div className="field-input-wrapper">
+                <span className="field-icon">🛡️</span>
+                <input
+                  id="center-confirm-pass"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  className="center-input"
+                  placeholder="Re-enter password"
+                  value={confirmPassword}
+                  onChange={(e) => {
+                    setConfirmPassword(e.target.value);
+                    if (error) setError('');
+                  }}
+                  autoComplete="new-password"
+                />
+                <button
+                  type="button"
+                  className="eye-toggle-btn"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  title={showConfirmPassword ? 'Hide Password' : 'Show Password'}
+                  aria-label={showConfirmPassword ? 'Hide Password' : 'Show Password'}
+                >
+                  {showConfirmPassword ? (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px' }}>
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                      <line x1="1" y1="1" x2="23" y2="23" />
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px' }}>
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                      <circle cx="12" cy="12" r="3" />
+                    </svg>
+                  )}
+                </button>
+              </div>
+            </div>
+          )}
 
-          {/* Submit Button */}
-          <button type="submit" className="submit-btn">
-            <span>Log In</span>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
-            </svg>
+          {/* Submit Action Button */}
+          <button type="submit" className="center-submit-btn" disabled={isLoading}>
+            <span className="btn-shimmer-sweep" />
+            <span className="btn-text">
+              {isLoading
+                ? 'LOGGING IN...'
+                : mode === 'login'
+                ? 'LOG IN ➔'
+                : 'CREATE ACCOUNT ➔'}
+            </span>
           </button>
         </form>
 
-        {/* Footer / Switch link */}
-        <div className="login-footer">
-          <span>Don't have an account?</span>
+        {/* Footer */}
+        <div className="card-footer-switch">
+          <span>{mode === 'login' ? "Don't have an account?" : 'Already have an account?'}</span>
           <button
             type="button"
-            className="signup-link"
-            onClick={onSwitchToSignup}
+            className="switch-action-btn"
+            onClick={() => {
+              soundEffects.playClick();
+              setMode(mode === 'login' ? 'signup' : 'login');
+              setError('');
+            }}
           >
-            Create Account
+            {mode === 'login' ? 'Create Account' : 'Log In'}
           </button>
         </div>
       </div>

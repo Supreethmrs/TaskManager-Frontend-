@@ -2,6 +2,10 @@
 
 All notable changes to the TaskForge backend are documented here.
 
+## [2.1.0] - 2026-08-27
+### Fixed
+- **Email Case & Whitespace Normalization**: Added `email.trim().toLowerCase()` to `/api/signup` and `/api/login` endpoints to prevent account authentication mismatches.
+
 ## [2.0.0] - 2026-08-27
 ### Added
 - **Symmetric XP Reversal (`lastXpAwarded`)**:
