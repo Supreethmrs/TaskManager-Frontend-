@@ -91,113 +91,107 @@ export const Login: React.FC<LoginProps> = ({
 
   return (
     <div className="center-auth-viewport">
-      {/* Top Right Theme Picker */}
+      {/* Top Floating Controls */}
       <div className="center-auth-theme-picker">
         <ThemePicker currentTheme={currentTheme} onThemeChange={onThemeChange} compact />
       </div>
 
-      {/* Main Centered Crystal Glacier Glass Card */}
-      <div className="center-login-card">
-        {/* Glow Header Accents */}
-        <div className="card-top-glow" />
+      {/* Main Luxury Crystal Glass Login Portal */}
+      <div className="luxury-auth-card">
+        {/* Animated Crystalline Aura Halo */}
+        <div className="card-ambient-glow" />
+        <div className="card-top-shine" />
 
-        {/* Card Top Brand & Status */}
-        <div className="card-brand-header">
-          <div className="brand-badge-pill">
-            <div className="brand-icon-glacier">
-              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        {/* Hero Brand Header */}
+        <div className="auth-hero-section">
+          <div className="hero-emblem-wrap">
+            <div className="hero-emblem-ring" />
+            <div className="hero-emblem-inner">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="emblem-svg">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
             </div>
-            <div className="brand-text-block">
-              <span className="brand-name">TASKFORGE</span>
-              <span className="brand-tag">GLACIER HQ v2.5</span>
-            </div>
           </div>
-          <div className="status-live-chip">
-            <span className="live-dot" />
-            <span className="live-text">SYSTEM ONLINE</span>
+          
+          <div className="hero-brand-meta">
+            <div className="brand-title-row">
+              <h2 className="brand-logo-text">TaskForge</h2>
+              <span className="brand-version-badge">Glacier v2.5</span>
+            </div>
+            <p className="hero-tagline">
+              {mode === 'login' 
+                ? 'High-Performance Workspace Matrix' 
+                : 'Level up your productivity & quests'}
+            </p>
           </div>
         </div>
 
-        {/* Mode Switcher Tabs */}
-        <div className="card-mode-toggle">
+        {/* Floating Pill Segmented Switcher */}
+        <div className="auth-segmented-nav">
           <button
             type="button"
-            className={`toggle-tab ${mode === 'login' ? 'active' : ''}`}
+            className={`nav-segment ${mode === 'login' ? 'active' : ''}`}
             onClick={() => {
               soundEffects.playClick();
               setMode('login');
               setError('');
             }}
           >
-            LOG IN
+            Sign In
           </button>
           <button
             type="button"
-            className={`toggle-tab ${mode === 'signup' ? 'active' : ''}`}
+            className={`nav-segment ${mode === 'signup' ? 'active' : ''}`}
             onClick={() => {
               soundEffects.playClick();
               setMode('signup');
               setError('');
             }}
           >
-            SIGN UP
+            Create Account
           </button>
-          <div className={`toggle-glider ${mode === 'signup' ? 'right' : 'left'}`} />
-        </div>
-
-        {/* Title & Quick Demo */}
-        <div className="card-title-block">
-          <div className="title-row-flex">
-            <h1 className="card-main-title">
-              {mode === 'login' ? 'WELCOME BACK' : 'CREATE ACCOUNT'}
-            </h1>
-            {mode === 'login' && (
-              <button type="button" className="demo-chip-btn" onClick={fillDemo} title="Auto-fill demo credentials">
-                ⚡ Demo Fill
-              </button>
-            )}
-          </div>
-          <p className="card-subtitle">
-            {mode === 'login'
-              ? 'Access your task matrix, Kanban boards, and daily quests'
-              : 'Join the workspace and elevate your daily productivity'}
-          </p>
+          <div className={`nav-slider-glow ${mode === 'signup' ? 'slide-right' : 'slide-left'}`} />
         </div>
 
         {/* Alerts */}
         {error && (
-          <div className="center-alert error" role="alert">
-            <span className="alert-icon">⚠️</span>
-            <span>{error}</span>
+          <div className="luxury-alert alert-error" role="alert">
+            <span className="alert-badge">!</span>
+            <span className="alert-text">{error}</span>
           </div>
         )}
         {signupSuccess && (
-          <div className="center-alert success" role="status">
-            <span className="alert-icon">✨</span>
-            <span>Account initialized! Switching to Log In...</span>
+          <div className="luxury-alert alert-success" role="status">
+            <span className="alert-badge">✓</span>
+            <span className="alert-text">Account created! Redirecting to Sign In...</span>
           </div>
         )}
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="center-form-stack" noValidate>
-          {/* Email Field */}
-          <div className="center-field-group">
-            <label className="field-label" htmlFor="center-email">
-              COMM-LINK (EMAIL)
-            </label>
-            <div className="field-input-wrapper">
-              <span className="field-icon-svg">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                  <polyline points="22,6 12,13 2,6" />
+        {/* Form Container */}
+        <form onSubmit={handleSubmit} className="auth-interactive-form" noValidate>
+          {/* Email Input */}
+          <div className="input-crystal-field">
+            <div className="field-header-meta">
+              <label htmlFor="auth-email" className="crystal-label">
+                Work Email
+              </label>
+              {mode === 'login' && (
+                <button type="button" className="quick-demo-link" onClick={fillDemo}>
+                  ⚡ Fast Demo
+                </button>
+              )}
+            </div>
+            <div className="crystal-input-shell">
+              <span className="shell-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
                 </svg>
               </span>
               <input
-                id="center-email"
+                id="auth-email"
                 type="email"
-                className="center-input"
+                className="crystal-native-input"
                 placeholder="commander@taskforge.gg"
                 value={email}
                 onChange={(e) => {
@@ -209,25 +203,25 @@ export const Login: React.FC<LoginProps> = ({
             </div>
           </div>
 
-          {/* Password Field */}
-          <div className="center-field-group">
-            <div className="field-label-row">
-              <label className="field-label" htmlFor="center-password">
-                SECURITY KEY (PASSWORD)
+          {/* Password Input */}
+          <div className="input-crystal-field">
+            <div className="field-header-meta">
+              <label htmlFor="auth-password" className="crystal-label">
+                Security Password
               </label>
             </div>
-            <div className="field-input-wrapper">
-              <span className="field-icon-svg">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+            <div className="crystal-input-shell">
+              <span className="shell-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                   <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                 </svg>
               </span>
               <input
-                id="center-password"
+                id="auth-password"
                 type={showPassword ? 'text' : 'password'}
-                className="center-input"
-                placeholder="••••••••"
+                className="crystal-native-input"
+                placeholder="••••••••••••"
                 value={password}
                 onChange={(e) => {
                   setPassword(e.target.value);
@@ -237,18 +231,17 @@ export const Login: React.FC<LoginProps> = ({
               />
               <button
                 type="button"
-                className="eye-toggle-btn"
+                className="eye-crystal-btn"
                 onClick={() => setShowPassword(!showPassword)}
-                title={showPassword ? 'Hide Password' : 'Show Password'}
-                aria-label={showPassword ? 'Hide Password' : 'Show Password'}
+                title={showPassword ? 'Hide password' : 'Show password'}
               >
                 {showPassword ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
                     <line x1="1" y1="1" x2="23" y2="23" />
                   </svg>
                 ) : (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                     <circle cx="12" cy="12" r="3" />
                   </svg>
@@ -257,22 +250,24 @@ export const Login: React.FC<LoginProps> = ({
             </div>
           </div>
 
-          {/* Confirm Password Field (Sign Up Only) */}
+          {/* Confirm Password (Sign Up) */}
           {mode === 'signup' && (
-            <div className="center-field-group anim-slide-down">
-              <label className="field-label" htmlFor="center-confirm-pass">
-                CONFIRM PASSWORD
-              </label>
-              <div className="field-input-wrapper">
-                <span className="field-icon-svg">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+            <div className="input-crystal-field anim-slide-in">
+              <div className="field-header-meta">
+                <label htmlFor="auth-confirm-pass" className="crystal-label">
+                  Confirm Password
+                </label>
+              </div>
+              <div className="crystal-input-shell">
+                <span className="shell-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   </svg>
                 </span>
                 <input
-                  id="center-confirm-pass"
+                  id="auth-confirm-pass"
                   type={showConfirmPassword ? 'text' : 'password'}
-                  className="center-input"
+                  className="crystal-native-input"
                   placeholder="Re-enter password"
                   value={confirmPassword}
                   onChange={(e) => {
@@ -283,18 +278,17 @@ export const Login: React.FC<LoginProps> = ({
                 />
                 <button
                   type="button"
-                  className="eye-toggle-btn"
+                  className="eye-crystal-btn"
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                  title={showConfirmPassword ? 'Hide Password' : 'Show Password'}
-                  aria-label={showConfirmPassword ? 'Hide Password' : 'Show Password'}
+                  title={showConfirmPassword ? 'Hide password' : 'Show password'}
                 >
                   {showConfirmPassword ? (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
                       <line x1="1" y1="1" x2="23" y2="23" />
                     </svg>
                   ) : (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                       <circle cx="12" cy="12" r="3" />
                     </svg>
@@ -304,40 +298,63 @@ export const Login: React.FC<LoginProps> = ({
             </div>
           )}
 
-          {/* Submit Action Button */}
-          <button type="submit" className="center-submit-btn" disabled={isLoading}>
-            <span className="btn-shimmer-sweep" />
-            <span className="btn-text">
-              {isLoading
-                ? 'AUTHENTICATING...'
-                : mode === 'login'
-                ? 'ACCESS WORKSPACE ➔'
-                : 'INITIALIZE ACCOUNT ➔'}
+          {/* Submit Magnetic Glass Button */}
+          <button type="submit" className="luxury-submit-btn" disabled={isLoading}>
+            <span className="btn-ambient-glow" />
+            <span className="btn-laser-shimmer" />
+            <span className="btn-content-flex">
+              {isLoading ? (
+                <>
+                  <span className="btn-spinner" />
+                  <span>Connecting...</span>
+                </>
+              ) : mode === 'login' ? (
+                <>
+                  <span>Enter Workspace</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="btn-arrow-svg">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </>
+              ) : (
+                <>
+                  <span>Initialize Account</span>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="btn-arrow-svg">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </>
+              )}
             </span>
           </button>
         </form>
 
-        {/* Footer */}
-        <div className="card-footer-switch">
-          <span>{mode === 'login' ? "Don't have an account?" : 'Already have an account?'}</span>
+        {/* Footer Switch */}
+        <div className="luxury-card-footer">
+          <span className="footer-prompt">
+            {mode === 'login' ? "Don't have an account?" : 'Already a registered member?'}
+          </span>
           <button
             type="button"
-            className="switch-action-btn"
+            className="footer-link-btn"
             onClick={() => {
               soundEffects.playClick();
               setMode(mode === 'login' ? 'signup' : 'login');
               setError('');
             }}
           >
-            {mode === 'login' ? 'Create Account' : 'Log In'}
+            {mode === 'login' ? 'Create one now' : 'Sign in here'}
           </button>
         </div>
 
-        {/* Feature Highlights Pills */}
-        <div className="card-feature-pills">
-          <span className="feature-pill">🔒 Encrypted</span>
-          <span className="feature-pill">⚡ Real-time Sync</span>
-          <span className="feature-pill">🎯 Gamified Quests</span>
+        {/* Luxury Micro Badges */}
+        <div className="luxury-badge-row">
+          <div className="micro-badge">
+            <span className="badge-bullet" />
+            <span>End-to-End Encrypted</span>
+          </div>
+          <div className="micro-badge">
+            <span className="badge-bullet" />
+            <span>Real-Time Sync</span>
+          </div>
         </div>
       </div>
     </div>
