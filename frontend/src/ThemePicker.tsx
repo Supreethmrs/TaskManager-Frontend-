@@ -3,6 +3,8 @@ import './ThemePicker.css';
 
 export type ThemeName =
   | 'obsidian-aurora'
+  | 'full-dark'
+  | 'crystal-glacier'
   | 'midnight-emerald'
   | 'cyber-slate'
   | 'polar-frost'
@@ -32,6 +34,24 @@ export const THEME_OPTIONS: ThemeOption[] = [
     accentSecondaryPreview: '#06b6d4',
   },
   {
+    id: 'full-dark',
+    name: 'Full Dark Mode',
+    emoji: '🌑',
+    description: 'Pitch Black & Crisp Contrast',
+    bgPreview: '#000000',
+    accentPreview: '#6366f1',
+    accentSecondaryPreview: '#38bdf8',
+  },
+  {
+    id: 'crystal-glacier',
+    name: 'Crystal Clear Glacier',
+    emoji: '🧊',
+    description: 'Arctic Abyss & Crystalline Cyan',
+    bgPreview: '#050c14',
+    accentPreview: '#00f2fe',
+    accentSecondaryPreview: '#7dd3fc',
+  },
+  {
     id: 'midnight-emerald',
     name: 'Midnight Emerald',
     emoji: '🌿',
@@ -48,15 +68,6 @@ export const THEME_OPTIONS: ThemeOption[] = [
     bgPreview: '#090a0f',
     accentPreview: '#3b82f6',
     accentSecondaryPreview: '#8b5cf6',
-  },
-  {
-    id: 'polar-frost',
-    name: 'Polar Frost',
-    emoji: '❄️',
-    description: 'Pristine Snow & Soft Indigo',
-    bgPreview: '#f8fafc',
-    accentPreview: '#6366f1',
-    accentSecondaryPreview: '#0ea5e9',
   },
 ];
 

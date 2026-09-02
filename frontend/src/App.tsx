@@ -82,16 +82,17 @@ function App() {
     const savedTheme = localStorage.getItem('taskforge_theme') as string | null;
     if (
       savedTheme === 'obsidian-aurora' ||
+      savedTheme === 'full-dark' ||
+      savedTheme === 'crystal-glacier' ||
       savedTheme === 'midnight-emerald' ||
-      savedTheme === 'cyber-slate' ||
-      savedTheme === 'polar-frost'
+      savedTheme === 'cyber-slate'
     ) {
       return savedTheme as ThemeName;
     }
     // Migration fallback for previous theme keys
     if (savedTheme === 'brat-charcoal' || savedTheme === 'dark-red') return 'midnight-emerald';
     if (savedTheme === 'neon-tokyo') return 'cyber-slate';
-    if (savedTheme === 'dreamcore-y2k' || savedTheme === 'light' || savedTheme === 'lavender-lime') return 'polar-frost';
+    if (savedTheme === 'dreamcore-y2k' || savedTheme === 'light' || savedTheme === 'lavender-lime' || savedTheme === 'polar-frost') return 'crystal-glacier';
     return 'obsidian-aurora'; // Default Flagship Unique & Standard Theme
   });
 

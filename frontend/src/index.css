@@ -204,71 +204,138 @@
 }
 
 /* ==========================================================================
-   THEME 4 - "Polar Frost / Clean Light"
-   - Clean Snow Slate (#f8fafc / #ffffff)
-   - Royal Indigo (#6366f1) & Soft Sky (#0ea5e9)
+   THEME 4 - "Full Dark / AMOLED Black"
+   - Pure Pitch Black base (#000000 / #08080a / #0c0c0e)
+   - Ultra Crisp High-Contrast Text & Electric Indigo Accents
    ========================================================================== */
-[data-theme="polar-frost"],
-[data-theme="dreamcore-y2k"],
-[data-theme="light"],
-[data-theme="lavender-lime"] {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
-  --bg-header: rgba(255, 255, 255, 0.95);
-  --bg-input: #ffffff;
-  --bg-modal: #ffffff;
-  --bg-modal-overlay: rgba(15, 23, 42, 0.6);
-  --bg-view-switcher: #f1f5f9;
-  --bg-radial-ambient: radial-gradient(circle at 50% -10%, rgba(99, 102, 241, 0.08) 0%, transparent 65%);
+[data-theme="full-dark"],
+[data-theme="amoled-dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: #08080a;
+  --bg-card: #0c0c0e;
+  --bg-card-hover: #141418;
+  --bg-header: rgba(0, 0, 0, 0.95);
+  --bg-input: #060608;
+  --bg-modal: #0c0c0e;
+  --bg-modal-overlay: rgba(0, 0, 0, 0.96);
+  --bg-view-switcher: #060608;
+  --bg-radial-ambient: radial-gradient(circle at 50% -10%, rgba(99, 102, 241, 0.12) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 80%);
 
   --accent-primary: #6366f1;
-  --accent-primary-hover: #4f46e5;
-  --accent-secondary: #0ea5e9;
-  --accent-glow: 0 0 12px rgba(99, 102, 241, 0.3);
-  --accent-glow-subtle: 0 0 7px rgba(99, 102, 241, 0.2);
-  --accent-glow-strong: 0 0 18px rgba(99, 102, 241, 0.45);
+  --accent-primary-hover: #818cf8;
+  --accent-secondary: #38bdf8;
+  --accent-glow: 0 0 16px rgba(99, 102, 241, 0.45);
+  --accent-glow-subtle: 0 0 8px rgba(99, 102, 241, 0.35);
+  --accent-glow-strong: 0 0 24px rgba(99, 102, 241, 0.65);
   --accent-btn-text: #ffffff;
 
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-dim: #94a3b8;
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1aa;
+  --text-dim: #71717a;
 
-  --border-subtle: #e2e8f0;
-  --border-card: #e2e8f0;
-  --border-card-hover: #cbd5e1;
-  --border-interactive: #cbd5e1;
+  --border-subtle: #18181b;
+  --border-card: #18181b;
+  --border-card-hover: #27272a;
+  --border-interactive: #27272a;
 
-  --badge-work-bg: #e0f2fe;
-  --badge-work-border: #bae6fd;
-  --badge-work-text: #0284c7;
+  --badge-work-bg: rgba(56, 189, 248, 0.12);
+  --badge-work-border: rgba(56, 189, 248, 0.35);
+  --badge-work-text: #38bdf8;
 
-  --badge-personal-bg: #f3e8ff;
-  --badge-personal-border: #e9d5ff;
-  --badge-personal-text: #7e22ce;
+  --badge-personal-bg: rgba(168, 85, 247, 0.12);
+  --badge-personal-border: rgba(168, 85, 247, 0.35);
+  --badge-personal-text: #c084fc;
 
-  --badge-urgent-bg: #ffe4e6;
-  --badge-urgent-border: #fecdd3;
-  --badge-urgent-text: #e11d48;
+  --badge-urgent-bg: rgba(244, 63, 94, 0.14);
+  --badge-urgent-border: #f43f5e;
+  --badge-urgent-text: #f43f5e;
 
-  --due-normal-bg: #f8fafc;
-  --due-normal-border: #e2e8f0;
-  --due-normal-text: #475569;
+  --due-normal-bg: rgba(255, 255, 255, 0.02);
+  --due-normal-border: #18181b;
+  --due-normal-text: #a1a1aa;
 
-  --due-today-bg: #fef3c7;
-  --due-today-border: #fde68a;
-  --due-today-text: #b45309;
+  --due-today-bg: rgba(245, 158, 11, 0.12);
+  --due-today-border: rgba(245, 158, 11, 0.5);
+  --due-today-text: #fbbf24;
 
-  --due-overdue-bg: #fee2e2;
-  --due-overdue-border: #fca5a5;
-  --due-overdue-text: #dc2626;
+  --due-overdue-bg: rgba(244, 63, 94, 0.14);
+  --due-overdue-border: rgba(244, 63, 94, 0.6);
+  --due-overdue-text: #f43f5e;
 
-  --table-row-even: #f8fafc;
-  --table-row-hover: #f1f5f9;
-  --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.06);
-  --shadow-modal: 0 20px 50px rgba(15, 23, 42, 0.18);
-  --grid-color: rgba(99, 102, 241, 0.02);
+  --table-row-even: rgba(255, 255, 255, 0.012);
+  --table-row-hover: rgba(255, 255, 255, 0.04);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.95);
+  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.98);
+  --grid-color: rgba(255, 255, 255, 0.015);
+}
+
+/* ==========================================================================
+   THEME 5 - "Crystal Clear Glacier"
+   - Deep Arctic Navy base (#050c14 / #0a1726 / #0f2238)
+   - Crystalline Cyan (#00f2fe) & Frosted Ice Blue (#7dd3fc)
+   ========================================================================== */
+[data-theme="crystal-glacier"],
+[data-theme="dreamcore-y2k"],
+[data-theme="light"],
+[data-theme="lavender-lime"],
+[data-theme="polar-frost"] {
+  --bg-primary: #050c14;
+  --bg-secondary: #0a1726;
+  --bg-card: #0a1726;
+  --bg-card-hover: #0f2238;
+  --bg-header: rgba(5, 12, 20, 0.92);
+  --bg-input: #06101c;
+  --bg-modal: #0a1726;
+  --bg-modal-overlay: rgba(2, 6, 12, 0.94);
+  --bg-view-switcher: #06101c;
+  --bg-radial-ambient: radial-gradient(circle at 50% -10%, rgba(0, 242, 254, 0.18) 0%, rgba(56, 189, 248, 0.08) 50%, transparent 80%);
+
+  --accent-primary: #00f2fe;
+  --accent-primary-hover: #38bdf8;
+  --accent-secondary: #7dd3fc;
+  --accent-glow: 0 0 16px rgba(0, 242, 254, 0.45);
+  --accent-glow-subtle: 0 0 8px rgba(0, 242, 254, 0.35);
+  --accent-glow-strong: 0 0 24px rgba(0, 242, 254, 0.7);
+  --accent-btn-text: #050c14;
+
+  --text-primary: #f0f9ff;
+  --text-secondary: #93c5fd;
+  --text-dim: #60a5fa;
+
+  --border-subtle: rgba(56, 189, 248, 0.16);
+  --border-card: rgba(56, 189, 248, 0.2);
+  --border-card-hover: rgba(0, 242, 254, 0.45);
+  --border-interactive: rgba(56, 189, 248, 0.3);
+
+  --badge-work-bg: rgba(0, 242, 254, 0.14);
+  --badge-work-border: rgba(0, 242, 254, 0.45);
+  --badge-work-text: #00f2fe;
+
+  --badge-personal-bg: rgba(125, 211, 252, 0.14);
+  --badge-personal-border: rgba(125, 211, 252, 0.4);
+  --badge-personal-text: #7dd3fc;
+
+  --badge-urgent-bg: rgba(244, 63, 94, 0.14);
+  --badge-urgent-border: #f43f5e;
+  --badge-urgent-text: #f43f5e;
+
+  --due-normal-bg: rgba(255, 255, 255, 0.02);
+  --due-normal-border: rgba(56, 189, 248, 0.18);
+  --due-normal-text: #93c5fd;
+
+  --due-today-bg: rgba(0, 242, 254, 0.14);
+  --due-today-border: rgba(0, 242, 254, 0.5);
+  --due-today-text: #00f2fe;
+
+  --due-overdue-bg: rgba(244, 63, 94, 0.14);
+  --due-overdue-border: rgba(244, 63, 94, 0.6);
+  --due-overdue-text: #f43f5e;
+
+  --table-row-even: rgba(255, 255, 255, 0.012);
+  --table-row-hover: rgba(0, 242, 254, 0.06);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.75);
+  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.95);
+  --grid-color: rgba(0, 242, 254, 0.03);
 }
 
 /* Base resets & typography */
