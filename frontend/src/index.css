@@ -4,267 +4,271 @@
 }
 
 /* ==========================================================================
-   GEN-Z THEME 1 - "Acid Glitch / Cyber Matrix" (Default)
-   - Midnight Void base (#07080d / #0d0f17)
-   - Electric Acid Lime (#ccff00) & Cyber Cyan (#00f2fe)
+   FLAGSHIP THEME - "Obsidian Aurora" (Default Unique & Standard)
+   - Deep Obsidian Navy base (#0a0e17 / #101726 / #162035)
+   - Electric Indigo (#6366f1) & Aurora Cyan (#06b6d4 / #38bdf8)
    ========================================================================== */
 :root,
+[data-theme="obsidian-aurora"],
 [data-theme="acid-glitch"] {
-  --bg-primary: #07080d;
-  --bg-secondary: #0d0f17;
-  --bg-card: #0d0f17;
-  --bg-card-hover: #121520;
-  --bg-header: #07080d;
-  --bg-input: #0a0c14;
-  --bg-modal: #0d0f17;
-  --bg-modal-overlay: rgba(7, 8, 13, 0.92);
-  --bg-view-switcher: #0a0c14;
-  --bg-radial-ambient: radial-gradient(circle at center, rgba(204, 255, 0, 0.08) 0%, transparent 65%);
+  --bg-primary: #0a0e17;
+  --bg-secondary: #101726;
+  --bg-card: #101726;
+  --bg-card-hover: #162035;
+  --bg-header: rgba(10, 14, 23, 0.92);
+  --bg-input: #0c121e;
+  --bg-modal: #101726;
+  --bg-modal-overlay: rgba(5, 8, 14, 0.92);
+  --bg-view-switcher: #0c121e;
+  --bg-radial-ambient: radial-gradient(circle at 50% -10%, rgba(99, 102, 241, 0.16) 0%, rgba(56, 189, 248, 0.06) 50%, transparent 80%);
 
-  --accent-primary: #ccff00;
-  --accent-primary-hover: #e5ff4d;
-  --accent-secondary: #00f2fe;
-  --accent-glow: 0 0 14px rgba(204, 255, 0, 0.5);
-  --accent-glow-subtle: 0 0 8px rgba(204, 255, 0, 0.4);
-  --accent-glow-strong: 0 0 22px rgba(204, 255, 0, 0.7);
-  --accent-btn-text: #07080d;
+  --accent-primary: #6366f1;
+  --accent-primary-hover: #4f46e5;
+  --accent-secondary: #06b6d4;
+  --accent-glow: 0 0 16px rgba(99, 102, 241, 0.45);
+  --accent-glow-subtle: 0 0 8px rgba(99, 102, 241, 0.35);
+  --accent-glow-strong: 0 0 24px rgba(99, 102, 241, 0.65);
+  --accent-btn-text: #ffffff;
 
   --text-primary: #f8fafc;
-  --text-secondary: #8492a6;
-  --text-dim: #4b5563;
+  --text-secondary: #94a3b8;
+  --text-dim: #64748b;
 
-  --border-subtle: #181f30;
-  --border-card: #181f30;
-  --border-card-hover: #263350;
-  --border-interactive: #222d42;
+  --border-subtle: #1e293b;
+  --border-card: #1e293b;
+  --border-card-hover: #2e3f5c;
+  --border-interactive: #24324a;
 
-  --badge-work-bg: rgba(0, 242, 254, 0.12);
-  --badge-work-border: rgba(0, 242, 254, 0.35);
-  --badge-work-text: #00f2fe;
+  --badge-work-bg: rgba(6, 182, 212, 0.12);
+  --badge-work-border: rgba(6, 182, 212, 0.4);
+  --badge-work-text: #38bdf8;
 
-  --badge-personal-bg: rgba(139, 92, 246, 0.15);
+  --badge-personal-bg: rgba(168, 85, 247, 0.12);
+  --badge-personal-border: rgba(168, 85, 247, 0.4);
+  --badge-personal-text: #c084fc;
+
+  --badge-urgent-bg: rgba(244, 63, 94, 0.14);
+  --badge-urgent-border: #f43f5e;
+  --badge-urgent-text: #f43f5e;
+
+  --due-normal-bg: rgba(255, 255, 255, 0.02);
+  --due-normal-border: #1e293b;
+  --due-normal-text: #94a3b8;
+
+  --due-today-bg: rgba(245, 158, 11, 0.12);
+  --due-today-border: rgba(245, 158, 11, 0.5);
+  --due-today-text: #fbbf24;
+
+  --due-overdue-bg: rgba(244, 63, 94, 0.14);
+  --due-overdue-border: rgba(244, 63, 94, 0.6);
+  --due-overdue-text: #f43f5e;
+
+  --table-row-even: rgba(255, 255, 255, 0.015);
+  --table-row-hover: rgba(99, 102, 241, 0.06);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.95);
+  --grid-color: rgba(99, 102, 241, 0.03);
+}
+
+/* ==========================================================================
+   THEME 2 - "Midnight Emerald"
+   - Deep Slate base (#080d12 / #0d161d)
+   - Emerald Mint (#10b981) & Cyber Teal (#14b8a6)
+   ========================================================================== */
+[data-theme="midnight-emerald"],
+[data-theme="brat-charcoal"],
+[data-theme="dark-red"] {
+  --bg-primary: #080d12;
+  --bg-secondary: #0d161d;
+  --bg-card: #0d161d;
+  --bg-card-hover: #13202b;
+  --bg-header: rgba(8, 13, 18, 0.92);
+  --bg-input: #0a1117;
+  --bg-modal: #0d161d;
+  --bg-modal-overlay: rgba(4, 7, 10, 0.92);
+  --bg-view-switcher: #0a1117;
+  --bg-radial-ambient: radial-gradient(circle at 50% -10%, rgba(16, 185, 129, 0.15) 0%, rgba(20, 184, 166, 0.05) 50%, transparent 80%);
+
+  --accent-primary: #10b981;
+  --accent-primary-hover: #059669;
+  --accent-secondary: #14b8a6;
+  --accent-glow: 0 0 16px rgba(16, 185, 129, 0.4);
+  --accent-glow-subtle: 0 0 8px rgba(16, 185, 129, 0.3);
+  --accent-glow-strong: 0 0 24px rgba(16, 185, 129, 0.6);
+  --accent-btn-text: #ffffff;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-dim: #64748b;
+
+  --border-subtle: #192734;
+  --border-card: #192734;
+  --border-card-hover: #233a4d;
+  --border-interactive: #1f3344;
+
+  --badge-work-bg: rgba(20, 184, 166, 0.12);
+  --badge-work-border: rgba(20, 184, 166, 0.4);
+  --badge-work-text: #2dd4bf;
+
+  --badge-personal-bg: rgba(56, 189, 248, 0.12);
+  --badge-personal-border: rgba(56, 189, 248, 0.4);
+  --badge-personal-text: #38bdf8;
+
+  --badge-urgent-bg: rgba(244, 63, 94, 0.14);
+  --badge-urgent-border: #f43f5e;
+  --badge-urgent-text: #f43f5e;
+
+  --due-normal-bg: rgba(255, 255, 255, 0.02);
+  --due-normal-border: #192734;
+  --due-normal-text: #94a3b8;
+
+  --due-today-bg: rgba(16, 185, 129, 0.12);
+  --due-today-border: rgba(16, 185, 129, 0.5);
+  --due-today-text: #34d399;
+
+  --due-overdue-bg: rgba(244, 63, 94, 0.14);
+  --due-overdue-border: rgba(244, 63, 94, 0.6);
+  --due-overdue-text: #f43f5e;
+
+  --table-row-even: rgba(255, 255, 255, 0.015);
+  --table-row-hover: rgba(16, 185, 129, 0.05);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.7);
+  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.95);
+  --grid-color: rgba(16, 185, 129, 0.03);
+}
+
+/* ==========================================================================
+   THEME 3 - "Cyber Slate / Royal Blue"
+   - Deep Carbon Black base (#090a0f / #0f1118)
+   - Vibrant Royal Blue (#3b82f6) & Cyber Purple (#8b5cf6)
+   ========================================================================== */
+[data-theme="cyber-slate"],
+[data-theme="neon-tokyo"] {
+  --bg-primary: #090a0f;
+  --bg-secondary: #0f1118;
+  --bg-card: #0f1118;
+  --bg-card-hover: #161a24;
+  --bg-header: rgba(9, 10, 15, 0.92);
+  --bg-input: #0b0d13;
+  --bg-modal: #0f1118;
+  --bg-modal-overlay: rgba(5, 5, 8, 0.92);
+  --bg-view-switcher: #0b0d13;
+  --bg-radial-ambient: radial-gradient(circle at 50% -10%, rgba(59, 130, 246, 0.16) 0%, rgba(139, 92, 246, 0.06) 50%, transparent 80%);
+
+  --accent-primary: #3b82f6;
+  --accent-primary-hover: #2563eb;
+  --accent-secondary: #8b5cf6;
+  --accent-glow: 0 0 16px rgba(59, 130, 246, 0.45);
+  --accent-glow-subtle: 0 0 8px rgba(59, 130, 246, 0.35);
+  --accent-glow-strong: 0 0 24px rgba(59, 130, 246, 0.65);
+  --accent-btn-text: #ffffff;
+
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-dim: #64748b;
+
+  --border-subtle: #1e2230;
+  --border-card: #1e2230;
+  --border-card-hover: #2c3348;
+  --border-interactive: #252b3d;
+
+  --badge-work-bg: rgba(59, 130, 246, 0.12);
+  --badge-work-border: rgba(59, 130, 246, 0.4);
+  --badge-work-text: #60a5fa;
+
+  --badge-personal-bg: rgba(139, 92, 246, 0.12);
   --badge-personal-border: rgba(139, 92, 246, 0.4);
   --badge-personal-text: #a78bfa;
 
-  --badge-urgent-bg: rgba(255, 0, 85, 0.15);
-  --badge-urgent-border: #ff0055;
-  --badge-urgent-text: #ff0055;
+  --badge-urgent-bg: rgba(244, 63, 94, 0.14);
+  --badge-urgent-border: #f43f5e;
+  --badge-urgent-text: #f43f5e;
 
   --due-normal-bg: rgba(255, 255, 255, 0.02);
-  --due-normal-border: #1e2538;
-  --due-normal-text: #8492a6;
+  --due-normal-border: #1e2230;
+  --due-normal-text: #94a3b8;
 
-  --due-today-bg: rgba(204, 255, 0, 0.1);
-  --due-today-border: rgba(204, 255, 0, 0.5);
-  --due-today-text: #ccff00;
+  --due-today-bg: rgba(59, 130, 246, 0.12);
+  --due-today-border: rgba(59, 130, 246, 0.5);
+  --due-today-text: #60a5fa;
 
-  --due-overdue-bg: rgba(255, 0, 85, 0.12);
-  --due-overdue-border: rgba(255, 0, 85, 0.55);
-  --due-overdue-text: #ff0055;
+  --due-overdue-bg: rgba(244, 63, 94, 0.14);
+  --due-overdue-border: rgba(244, 63, 94, 0.6);
+  --due-overdue-text: #f43f5e;
 
   --table-row-even: rgba(255, 255, 255, 0.015);
-  --table-row-hover: rgba(204, 255, 0, 0.04);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.85);
+  --table-row-hover: rgba(59, 130, 246, 0.06);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.7);
   --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.95);
-  --grid-color: rgba(204, 255, 0, 0.025);
+  --grid-color: rgba(59, 130, 246, 0.03);
 }
 
 /* ==========================================================================
-   GEN-Z THEME 2 - "Neon Tokyo / Synthwave Sunset"
-   - Deep Obsidian Indigo (#080612 / #0e0b1f)
-   - Hot Neon Magenta (#ff007f) & Cyber Purple (#a855f7)
+   THEME 4 - "Polar Frost / Clean Light"
+   - Clean Snow Slate (#f8fafc / #ffffff)
+   - Royal Indigo (#6366f1) & Soft Sky (#0ea5e9)
    ========================================================================== */
-[data-theme="neon-tokyo"] {
-  --bg-primary: #080612;
-  --bg-secondary: #0e0b1f;
-  --bg-card: #0e0b1f;
-  --bg-card-hover: #15102a;
-  --bg-header: #080612;
-  --bg-input: #0a0717;
-  --bg-modal: #0e0b1f;
-  --bg-modal-overlay: rgba(8, 6, 18, 0.92);
-  --bg-view-switcher: #0a0717;
-  --bg-radial-ambient: radial-gradient(circle at center, rgba(255, 0, 127, 0.09) 0%, transparent 65%);
-
-  --accent-primary: #ff007f;
-  --accent-primary-hover: #ff3399;
-  --accent-secondary: #a855f7;
-  --accent-glow: 0 0 14px rgba(255, 0, 127, 0.5);
-  --accent-glow-subtle: 0 0 8px rgba(255, 0, 127, 0.4);
-  --accent-glow-strong: 0 0 22px rgba(255, 0, 127, 0.7);
-  --accent-btn-text: #ffffff;
-
-  --text-primary: #ffffff;
-  --text-secondary: #948ca8;
-  --text-dim: #5c5570;
-
-  --border-subtle: #241738;
-  --border-card: #25183d;
-  --border-card-hover: #3d2466;
-  --border-interactive: #351f57;
-
-  --badge-work-bg: rgba(168, 85, 247, 0.15);
-  --badge-work-border: rgba(168, 85, 247, 0.4);
-  --badge-work-text: #c084fc;
-
-  --badge-personal-bg: rgba(0, 240, 255, 0.12);
-  --badge-personal-border: rgba(0, 240, 255, 0.35);
-  --badge-personal-text: #38bdf8;
-
-  --badge-urgent-bg: rgba(255, 0, 127, 0.15);
-  --badge-urgent-border: #ff007f;
-  --badge-urgent-text: #ff007f;
-
-  --due-normal-bg: rgba(255, 255, 255, 0.02);
-  --due-normal-border: #28193f;
-  --due-normal-text: #948ca8;
-
-  --due-today-bg: rgba(255, 123, 0, 0.1);
-  --due-today-border: rgba(255, 123, 0, 0.5);
-  --due-today-text: #ff7b00;
-
-  --due-overdue-bg: rgba(255, 0, 127, 0.12);
-  --due-overdue-border: rgba(255, 0, 127, 0.55);
-  --due-overdue-text: #ff007f;
-
-  --table-row-even: rgba(255, 255, 255, 0.015);
-  --table-row-hover: rgba(255, 0, 127, 0.04);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.85);
-  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.95);
-  --grid-color: rgba(255, 0, 127, 0.025);
-}
-
-/* ==========================================================================
-   GEN-Z THEME 3 - "Brat & Charcoal" (Brat Acid / High-Contrast Minimal)
-   - Matte True Black (#000000 / #0a0a0a)
-   - Iconic Brat Green (#8ace00 / #9fe81b) & Liquid Chrome (#e2e8f0)
-   ========================================================================== */
-[data-theme="brat-charcoal"],
-[data-theme="dark-red"] {
-  --bg-primary: #000000;
-  --bg-secondary: #0d0d0d;
-  --bg-card: #0d0d0d;
-  --bg-card-hover: #141414;
-  --bg-header: #000000;
-  --bg-input: #080808;
-  --bg-modal: #0d0d0d;
-  --bg-modal-overlay: rgba(0, 0, 0, 0.94);
-  --bg-view-switcher: #080808;
-  --bg-radial-ambient: radial-gradient(circle at center, rgba(138, 206, 0, 0.08) 0%, transparent 65%);
-
-  --accent-primary: #8ace00;
-  --accent-primary-hover: #9fe81b;
-  --accent-secondary: #e2e8f0;
-  --accent-glow: 0 0 12px rgba(138, 206, 0, 0.45);
-  --accent-glow-subtle: 0 0 7px rgba(138, 206, 0, 0.35);
-  --accent-glow-strong: 0 0 20px rgba(138, 206, 0, 0.65);
-  --accent-btn-text: #000000;
-
-  --text-primary: #f5f5f5;
-  --text-secondary: #7e7e7e;
-  --text-dim: #4a4a4a;
-
-  --border-subtle: #1c1c1c;
-  --border-card: #1c1c1c;
-  --border-card-hover: #2c2c2c;
-  --border-interactive: #242424;
-
-  --badge-work-bg: rgba(226, 232, 240, 0.1);
-  --badge-work-border: rgba(226, 232, 240, 0.3);
-  --badge-work-text: #e2e8f0;
-
-  --badge-personal-bg: rgba(138, 206, 0, 0.12);
-  --badge-personal-border: rgba(138, 206, 0, 0.35);
-  --badge-personal-text: #8ace00;
-
-  --badge-urgent-bg: rgba(255, 30, 30, 0.15);
-  --badge-urgent-border: #ff2a2a;
-  --badge-urgent-text: #ff2a2a;
-
-  --due-normal-bg: rgba(255, 255, 255, 0.02);
-  --due-normal-border: #222222;
-  --due-normal-text: #7e7e7e;
-
-  --due-today-bg: rgba(138, 206, 0, 0.1);
-  --due-today-border: rgba(138, 206, 0, 0.5);
-  --due-today-text: #8ace00;
-
-  --due-overdue-bg: rgba(255, 30, 30, 0.12);
-  --due-overdue-border: rgba(255, 30, 30, 0.55);
-  --due-overdue-text: #ff2a2a;
-
-  --table-row-even: rgba(255, 255, 255, 0.015);
-  --table-row-hover: rgba(138, 206, 0, 0.03);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.9);
-  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.95);
-  --grid-color: rgba(138, 206, 0, 0.02);
-}
-
-/* ==========================================================================
-   GEN-Z THEME 4 - "Y2K Dreamcore / Cotton Candy"
-   - Soft Dream Lavender (#f8f6fc / #ffffff)
-   - Hyperpop Barbie Pink (#ff2a85) & Pastel Sky Blue (#38bdf8)
-   ========================================================================== */
+[data-theme="polar-frost"],
 [data-theme="dreamcore-y2k"],
 [data-theme="light"],
 [data-theme="lavender-lime"] {
-  --bg-primary: #f8f6fc;
+  --bg-primary: #f8fafc;
   --bg-secondary: #ffffff;
   --bg-card: #ffffff;
-  --bg-card-hover: #ffffff;
-  --bg-header: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-header: rgba(255, 255, 255, 0.95);
   --bg-input: #ffffff;
   --bg-modal: #ffffff;
-  --bg-modal-overlay: rgba(30, 27, 46, 0.6);
-  --bg-view-switcher: #f1ecfa;
-  --bg-radial-ambient: radial-gradient(circle at center, rgba(255, 42, 133, 0.08) 0%, transparent 65%);
+  --bg-modal-overlay: rgba(15, 23, 42, 0.6);
+  --bg-view-switcher: #f1f5f9;
+  --bg-radial-ambient: radial-gradient(circle at 50% -10%, rgba(99, 102, 241, 0.08) 0%, transparent 65%);
 
-  --accent-primary: #ff2a85;
-  --accent-primary-hover: #e6106e;
-  --accent-secondary: #38bdf8;
-  --accent-glow: 0 0 12px rgba(255, 42, 133, 0.35);
-  --accent-glow-subtle: 0 0 7px rgba(255, 42, 133, 0.28);
-  --accent-glow-strong: 0 0 18px rgba(255, 42, 133, 0.55);
+  --accent-primary: #6366f1;
+  --accent-primary-hover: #4f46e5;
+  --accent-secondary: #0ea5e9;
+  --accent-glow: 0 0 12px rgba(99, 102, 241, 0.3);
+  --accent-glow-subtle: 0 0 7px rgba(99, 102, 241, 0.2);
+  --accent-glow-strong: 0 0 18px rgba(99, 102, 241, 0.45);
   --accent-btn-text: #ffffff;
 
-  --text-primary: #1e1b2e;
-  --text-secondary: #6b6480;
-  --text-dim: #9991b0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-dim: #94a3b8;
 
-  --border-subtle: #e8ddfc;
-  --border-card: #e8ddfc;
-  --border-card-hover: #d5c2f7;
-  --border-interactive: #d5c2f7;
+  --border-subtle: #e2e8f0;
+  --border-card: #e2e8f0;
+  --border-card-hover: #cbd5e1;
+  --border-interactive: #cbd5e1;
 
-  --badge-work-bg: #fdf2f8;
-  --badge-work-border: #fbcfe8;
-  --badge-work-text: #db2777;
+  --badge-work-bg: #e0f2fe;
+  --badge-work-border: #bae6fd;
+  --badge-work-text: #0284c7;
 
-  --badge-personal-bg: #f0f9ff;
-  --badge-personal-border: #bae6fd;
-  --badge-personal-text: #0284c7;
+  --badge-personal-bg: #f3e8ff;
+  --badge-personal-border: #e9d5ff;
+  --badge-personal-text: #7e22ce;
 
-  --badge-urgent-bg: #fff1f2;
+  --badge-urgent-bg: #ffe4e6;
   --badge-urgent-border: #fecdd3;
   --badge-urgent-text: #e11d48;
 
-  --due-normal-bg: #f8f6fc;
-  --due-normal-border: #e8ddfc;
-  --due-normal-text: #6b6480;
+  --due-normal-bg: #f8fafc;
+  --due-normal-border: #e2e8f0;
+  --due-normal-text: #475569;
 
-  --due-today-bg: #fffbeb;
+  --due-today-bg: #fef3c7;
   --due-today-border: #fde68a;
   --due-today-text: #b45309;
 
-  --due-overdue-bg: #fff1f2;
+  --due-overdue-bg: #fee2e2;
   --due-overdue-border: #fca5a5;
-  --due-overdue-text: #e11d48;
+  --due-overdue-text: #dc2626;
 
-  --table-row-even: #fbf9fd;
-  --table-row-hover: #f5effe;
-  --shadow-card: 0 4px 16px rgba(107, 70, 193, 0.07);
-  --shadow-modal: 0 20px 50px rgba(30, 27, 46, 0.2);
-  --grid-color: rgba(255, 42, 133, 0.025);
+  --table-row-even: #f8fafc;
+  --table-row-hover: #f1f5f9;
+  --shadow-card: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-modal: 0 20px 50px rgba(15, 23, 42, 0.18);
+  --grid-color: rgba(99, 102, 241, 0.02);
 }
 
 /* Base resets & typography */

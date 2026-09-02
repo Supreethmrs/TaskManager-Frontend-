@@ -75,23 +75,24 @@ function AppRoutes({ currentTheme, onThemeChange }: AppRoutesProps) {
 
 function App() {
   // =========================================================================
-  // GEN-Z THEME STATE & LOCALSTORAGE PERSISTENCE:
-  // Stores user's chosen Gen-Z visual aesthetic across sessions.
+  // THEME STATE & LOCALSTORAGE PERSISTENCE:
+  // Stores user's chosen visual aesthetic across sessions.
   // =========================================================================
   const [theme, setTheme] = useState<ThemeName>(() => {
-    const savedTheme = localStorage.getItem('taskforge_theme') as ThemeName | null;
+    const savedTheme = localStorage.getItem('taskforge_theme') as string | null;
     if (
-      savedTheme === 'acid-glitch' ||
-      savedTheme === 'neon-tokyo' ||
-      savedTheme === 'brat-charcoal' ||
-      savedTheme === 'dreamcore-y2k'
+      savedTheme === 'obsidian-aurora' ||
+      savedTheme === 'midnight-emerald' ||
+      savedTheme === 'cyber-slate' ||
+      savedTheme === 'polar-frost'
     ) {
-      return savedTheme;
+      return savedTheme as ThemeName;
     }
     // Migration fallback for previous theme keys
-    if (savedTheme === 'dark-red') return 'acid-glitch';
-    if (savedTheme === 'light' || savedTheme === 'lavender-lime') return 'dreamcore-y2k';
-    return 'acid-glitch'; // Default Gen-Z Acid Cyberpunk theme
+    if (savedTheme === 'brat-charcoal' || savedTheme === 'dark-red') return 'midnight-emerald';
+    if (savedTheme === 'neon-tokyo') return 'cyber-slate';
+    if (savedTheme === 'dreamcore-y2k' || savedTheme === 'light' || savedTheme === 'lavender-lime') return 'polar-frost';
+    return 'obsidian-aurora'; // Default Flagship Unique & Standard Theme
   });
 
   useEffect(() => {

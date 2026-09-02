@@ -14,7 +14,7 @@ interface SignupProps {
 export const Signup: React.FC<SignupProps> = ({
   onSwitchToLogin,
   onLoginSuccess,
-  currentTheme = 'acid-glitch',
+  currentTheme = 'obsidian-aurora',
   onThemeChange = () => {},
 }) => {
   const [email, setEmail] = useState<string>('');

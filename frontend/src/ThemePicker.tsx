@@ -1,7 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './ThemePicker.css';
 
-export type ThemeName = 'acid-glitch' | 'neon-tokyo' | 'brat-charcoal' | 'dreamcore-y2k';
+export type ThemeName =
+  | 'obsidian-aurora'
+  | 'midnight-emerald'
+  | 'cyber-slate'
+  | 'polar-frost'
+  | 'acid-glitch'
+  | 'neon-tokyo'
+  | 'brat-charcoal'
+  | 'dreamcore-y2k';
 
 export interface ThemeOption {
   id: ThemeName;
@@ -15,40 +23,40 @@ export interface ThemeOption {
 
 export const THEME_OPTIONS: ThemeOption[] = [
   {
-    id: 'acid-glitch',
-    name: 'Acid Glitch',
-    emoji: '🧪',
-    description: 'Cyber Matrix & Neon Lime',
-    bgPreview: '#07080d',
-    accentPreview: '#ccff00',
-    accentSecondaryPreview: '#00f2fe',
+    id: 'obsidian-aurora',
+    name: 'Obsidian Aurora',
+    emoji: '🌌',
+    description: 'Midnight Slate & Electric Indigo',
+    bgPreview: '#0a0e17',
+    accentPreview: '#6366f1',
+    accentSecondaryPreview: '#06b6d4',
   },
   {
-    id: 'neon-tokyo',
-    name: 'Neon Tokyo',
-    emoji: '🌆',
-    description: 'Synthwave & Hot Magenta',
-    bgPreview: '#080612',
-    accentPreview: '#ff007f',
-    accentSecondaryPreview: '#a855f7',
+    id: 'midnight-emerald',
+    name: 'Midnight Emerald',
+    emoji: '🌿',
+    description: 'Deep Slate & Cyber Mint',
+    bgPreview: '#080d12',
+    accentPreview: '#10b981',
+    accentSecondaryPreview: '#14b8a6',
   },
   {
-    id: 'brat-charcoal',
-    name: 'Brat & Charcoal',
-    emoji: '🍏',
-    description: 'Brat Green & Matte Black',
-    bgPreview: '#000000',
-    accentPreview: '#8ace00',
-    accentSecondaryPreview: '#e2e8f0',
+    id: 'cyber-slate',
+    name: 'Cyber Slate',
+    emoji: '⚡',
+    description: 'Monolith Dark & Royal Blue',
+    bgPreview: '#090a0f',
+    accentPreview: '#3b82f6',
+    accentSecondaryPreview: '#8b5cf6',
   },
   {
-    id: 'dreamcore-y2k',
-    name: 'Y2K Dreamcore',
-    emoji: '🌸',
-    description: 'Cotton Candy & Barbie Pink',
-    bgPreview: '#f8f6fc',
-    accentPreview: '#ff2a85',
-    accentSecondaryPreview: '#38bdf8',
+    id: 'polar-frost',
+    name: 'Polar Frost',
+    emoji: '❄️',
+    description: 'Pristine Snow & Soft Indigo',
+    bgPreview: '#f8fafc',
+    accentPreview: '#6366f1',
+    accentSecondaryPreview: '#0ea5e9',
   },
 ];
 
@@ -96,8 +104,8 @@ export const ThemePicker: React.FC<ThemePickerProps> = ({
         type="button"
         className={`theme-picker-trigger ${isOpen ? 'active' : ''}`}
         onClick={() => setIsOpen(!isOpen)}
-        title="Switch Gen-Z Theme"
-        aria-label="Switch Gen-Z Theme"
+        title="Theme Palette"
+        aria-label="Theme Palette"
         aria-expanded={isOpen}
       >
         <svg
@@ -120,7 +128,7 @@ export const ThemePicker: React.FC<ThemePickerProps> = ({
       {isOpen && (
         <div className="theme-picker-dropdown" role="menu">
           <div className="theme-picker-header">
-            <span className="theme-header-txt">⚡ GEN-Z THEMES</span>
+            <span className="theme-header-txt">✨ THEME PALETTES</span>
           </div>
 
           <div className="theme-options-list">
@@ -139,7 +147,7 @@ export const ThemePicker: React.FC<ThemePickerProps> = ({
                     className="theme-swatch-disc"
                     style={{
                       backgroundColor: theme.bgPreview,
-                      border: theme.id === 'dreamcore-y2k' ? '1px solid #d8b4fe' : '1px solid #2d3748',
+                      border: theme.id === 'polar-frost' || theme.id === 'dreamcore-y2k' ? '1px solid #cbd5e1' : '1px solid #2d3748',
                     }}
                   >
                     <span

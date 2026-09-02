@@ -14,7 +14,7 @@ interface LoginProps {
 export const Login: React.FC<LoginProps> = ({
   onSwitchToSignup: _onSwitchToSignup,
   onLoginSuccess,
-  currentTheme = 'acid-glitch',
+  currentTheme = 'obsidian-aurora',
   onThemeChange = () => {},
 }) => {
   const [mode, setMode] = useState<'login' | 'signup'>('login');
