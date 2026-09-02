@@ -27,6 +27,13 @@ export const Login: React.FC<LoginProps> = ({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [signupSuccess, setSignupSuccess] = useState<boolean>(false);
 
+  const fillDemo = () => {
+    soundEffects.playClick();
+    setEmail('commander@taskforge.gg');
+    setPassword('password123');
+    setError('');
+  };
+
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
@@ -89,20 +96,27 @@ export const Login: React.FC<LoginProps> = ({
         <ThemePicker currentTheme={currentTheme} onThemeChange={onThemeChange} compact />
       </div>
 
-      {/* Main Centered Frosted Glass Login Card */}
+      {/* Main Centered Crystal Glacier Glass Card */}
       <div className="center-login-card">
+        {/* Glow Header Accents */}
+        <div className="card-top-glow" />
+
         {/* Card Top Brand & Status */}
         <div className="card-brand-header">
           <div className="brand-badge-pill">
-            <span className="brand-icon">⚡</span>
+            <div className="brand-icon-glacier">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+              </svg>
+            </div>
             <div className="brand-text-block">
               <span className="brand-name">TASKFORGE</span>
-              <span className="brand-tag">HQ v2.0</span>
+              <span className="brand-tag">GLACIER HQ v2.5</span>
             </div>
           </div>
           <div className="status-live-chip">
             <span className="live-dot" />
-            <span className="live-text">ONLINE</span>
+            <span className="live-text">SYSTEM ONLINE</span>
           </div>
         </div>
 
@@ -133,15 +147,22 @@ export const Login: React.FC<LoginProps> = ({
           <div className={`toggle-glider ${mode === 'signup' ? 'right' : 'left'}`} />
         </div>
 
-        {/* Title Section */}
+        {/* Title & Quick Demo */}
         <div className="card-title-block">
-          <h1 className="card-main-title">
-            {mode === 'login' ? 'WELCOME BACK' : 'CREATE ACCOUNT'}
-          </h1>
+          <div className="title-row-flex">
+            <h1 className="card-main-title">
+              {mode === 'login' ? 'WELCOME BACK' : 'CREATE ACCOUNT'}
+            </h1>
+            {mode === 'login' && (
+              <button type="button" className="demo-chip-btn" onClick={fillDemo} title="Auto-fill demo credentials">
+                ⚡ Demo Fill
+              </button>
+            )}
+          </div>
           <p className="card-subtitle">
             {mode === 'login'
-              ? 'Access your task matrix and daily quests'
-              : 'Join the crew and level up your daily productivity'}
+              ? 'Access your task matrix, Kanban boards, and daily quests'
+              : 'Join the workspace and elevate your daily productivity'}
           </p>
         </div>
 
@@ -167,7 +188,12 @@ export const Login: React.FC<LoginProps> = ({
               COMM-LINK (EMAIL)
             </label>
             <div className="field-input-wrapper">
-              <span className="field-icon">✉️</span>
+              <span className="field-icon-svg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </span>
               <input
                 id="center-email"
                 type="email"
@@ -191,7 +217,12 @@ export const Login: React.FC<LoginProps> = ({
               </label>
             </div>
             <div className="field-input-wrapper">
-              <span className="field-icon">🔒</span>
+              <span className="field-icon-svg">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              </span>
               <input
                 id="center-password"
                 type={showPassword ? 'text' : 'password'}
@@ -212,12 +243,12 @@ export const Login: React.FC<LoginProps> = ({
                 aria-label={showPassword ? 'Hide Password' : 'Show Password'}
               >
                 {showPassword ? (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px' }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
                     <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
                     <line x1="1" y1="1" x2="23" y2="23" />
                   </svg>
                 ) : (
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px' }}>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                     <circle cx="12" cy="12" r="3" />
                   </svg>
@@ -233,7 +264,11 @@ export const Login: React.FC<LoginProps> = ({
                 CONFIRM PASSWORD
               </label>
               <div className="field-input-wrapper">
-                <span className="field-icon">🛡️</span>
+                <span className="field-icon-svg">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
+                </span>
                 <input
                   id="center-confirm-pass"
                   type={showConfirmPassword ? 'text' : 'password'}
@@ -254,12 +289,12 @@ export const Login: React.FC<LoginProps> = ({
                   aria-label={showConfirmPassword ? 'Hide Password' : 'Show Password'}
                 >
                   {showConfirmPassword ? (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px' }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
                       <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
                       <line x1="1" y1="1" x2="23" y2="23" />
                     </svg>
                   ) : (
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: '18px', height: '18px' }}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="16" height="16">
                       <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                       <circle cx="12" cy="12" r="3" />
                     </svg>
@@ -274,10 +309,10 @@ export const Login: React.FC<LoginProps> = ({
             <span className="btn-shimmer-sweep" />
             <span className="btn-text">
               {isLoading
-                ? 'LOGGING IN...'
+                ? 'AUTHENTICATING...'
                 : mode === 'login'
-                ? 'LOG IN ➔'
-                : 'CREATE ACCOUNT ➔'}
+                ? 'ACCESS WORKSPACE ➔'
+                : 'INITIALIZE ACCOUNT ➔'}
             </span>
           </button>
         </form>
@@ -296,6 +331,13 @@ export const Login: React.FC<LoginProps> = ({
           >
             {mode === 'login' ? 'Create Account' : 'Log In'}
           </button>
+        </div>
+
+        {/* Feature Highlights Pills */}
+        <div className="card-feature-pills">
+          <span className="feature-pill">🔒 Encrypted</span>
+          <span className="feature-pill">⚡ Real-time Sync</span>
+          <span className="feature-pill">🎯 Gamified Quests</span>
         </div>
       </div>
     </div>
