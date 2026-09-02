@@ -2,10 +2,10 @@ import React, { useState, useRef, useEffect } from 'react';
 import './ThemePicker.css';
 
 export type ThemeName =
-  | 'obsidian-aurora'
-  | 'full-dark'
   | 'crystal-glacier'
+  | 'full-dark'
   | 'midnight-emerald'
+  | 'obsidian-aurora'
   | 'cyber-slate'
   | 'polar-frost'
   | 'acid-glitch'
@@ -25,13 +25,13 @@ export interface ThemeOption {
 
 export const THEME_OPTIONS: ThemeOption[] = [
   {
-    id: 'obsidian-aurora',
-    name: 'Obsidian Aurora',
-    emoji: '🌌',
-    description: 'Midnight Slate & Electric Indigo',
-    bgPreview: '#0a0e17',
-    accentPreview: '#6366f1',
-    accentSecondaryPreview: '#06b6d4',
+    id: 'crystal-glacier',
+    name: 'Crystal Clear Glacier',
+    emoji: '🧊',
+    description: 'Arctic Abyss & Glacial Ice Cyan',
+    bgPreview: '#02111e',
+    accentPreview: '#00d2ff',
+    accentSecondaryPreview: '#7dd3fc',
   },
   {
     id: 'full-dark',
@@ -43,15 +43,6 @@ export const THEME_OPTIONS: ThemeOption[] = [
     accentSecondaryPreview: '#38bdf8',
   },
   {
-    id: 'crystal-glacier',
-    name: 'Crystal Clear Glacier',
-    emoji: '🧊',
-    description: 'Arctic Abyss & Crystalline Cyan',
-    bgPreview: '#050c14',
-    accentPreview: '#00f2fe',
-    accentSecondaryPreview: '#7dd3fc',
-  },
-  {
     id: 'midnight-emerald',
     name: 'Midnight Emerald',
     emoji: '🌿',
@@ -59,15 +50,6 @@ export const THEME_OPTIONS: ThemeOption[] = [
     bgPreview: '#080d12',
     accentPreview: '#10b981',
     accentSecondaryPreview: '#14b8a6',
-  },
-  {
-    id: 'cyber-slate',
-    name: 'Cyber Slate',
-    emoji: '⚡',
-    description: 'Monolith Dark & Royal Blue',
-    bgPreview: '#090a0f',
-    accentPreview: '#3b82f6',
-    accentSecondaryPreview: '#8b5cf6',
   },
 ];
 
